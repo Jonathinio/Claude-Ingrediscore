@@ -19,24 +19,23 @@ After any meaningful Mac/Xcode work block:
 - commit and push changes
 
 ## Latest update
-- Date/time: 2026-03-30 18:25 CDT
+- Date/time: 2026-03-30 18:33 CDT
 - What I changed:
-  - Adjusted the Scan behavior based on Jonathan’s clarification that the bottom-tab Scan action should open directly into barcode scanning, not a menu of scan options.
-  - Updated the app shell so the Scan tab now opens `BarcodeScanView` directly.
-  - Rebuilt `BarcodeScanView` into a more product-accurate action-first scan screen:
-    - direct barcode lookup focus
-    - cleaner scanner-first presentation
-    - unknown-barcode fallback messaging
-    - guided new-product capture steps as the fallback path instead of first-screen choices
-  - Rebuilt successfully against the workspace after the scan behavior correction.
+  - Continued the Scan rebuild by replacing the barcode-entry-only approach with the first real native camera-backed scanner layer.
+  - Added camera usage description into the generated app Info.plist settings.
+  - Added `BarcodeScannerCoordinator` with AVCapture session setup and barcode metadata output handling.
+  - Added a live camera preview view for the Scan screen.
+  - Added barcode-detection plumbing so the scan screen can react to machine-readable codes instead of only manual text entry.
+  - Resolved the Swift 6 actor-safety issue around the metadata delegate by extracting it into a separate helper object.
+  - Rebuilt successfully against the workspace after the camera-scanner refactor.
 - Build status:
   - `xcodebuild -workspace IngrediScore.xcworkspace -scheme IngrediScore -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1' build` succeeds.
 - New blockers:
-  - No new hard blocker.
-  - The scan flow is now conceptually closer to the intended UX, but still needs a real native camera barcode scanner and richer OCR/image-driven capture flow.
+  - No hard build blocker.
+  - Real runtime validation is still needed to confirm the camera preview and detection behavior behave correctly on device.
 - Decisions needed from Jonathan:
   - None immediately required.
 - Recommended next step:
-  - Implement the next actual Scan layer: native barcode camera behavior first, then deeper new-product capture / OCR analysis flow.
+  - Run the updated workspace build and verify the Scan tab opens camera preview, then refine the success/fallback flow and continue into richer OCR/new-product capture.
 - Commit(s):
   - Pending local commit(s) from this update.

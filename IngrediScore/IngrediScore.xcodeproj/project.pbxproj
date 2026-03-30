@@ -51,6 +51,7 @@
 		A0B8D0FCF778BFE783C51A6E /* FirebaseRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DBA7E4F5CEF29C5AD34AF0 /* FirebaseRepositories.swift */; };
 		A1C93C98381C86D2ABF3BC27 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3F88391B05C239E817083D /* Ingredient.swift */; };
 		A5527731A4E856E8C5B7E5A2 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9876F9E1DD03D1CC321D555E /* AppError.swift */; };
+		A8683BEED90CB5787CE405B0 /* Pods_IngrediScore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D22A6072733BCA6D7B7FF7 /* Pods_IngrediScore.framework */; };
 		AAE785D68A086E2AC52614DD /* LoadableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34541FA083C28FBAE48520 /* LoadableState.swift */; };
 		B072F09A4114F5931A25E5A2 /* ScoringVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B18F194B99C03A6086DDB /* ScoringVersion.swift */; };
 		B520D8C7457A292BD67E0A2A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E5C79494876502E131F00D /* Product.swift */; };
@@ -76,35 +77,36 @@
 /* Begin PBXFileReference section */
 		01292392AE630BECD1946E82 /* BarcodeScanView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarcodeScanView.swift; path = Features/ScanBarcode/BarcodeScanView.swift; sourceTree = "<group>"; };
 		023E004FCEACDD47BA35339A /* FoodLibraryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoodLibraryView.swift; sourceTree = "<group>"; };
-		0796B79C229B54A913B17AF5 /* SwiftDataPlan.md */ = {isa = PBXFileReference; includeInIndex = 1; name = SwiftDataPlan.md; path = Data/Local/SwiftDataPlan.md; sourceTree = "<group>"; };
-		09C908C1E3AE72F97B3373AA /* DOCS_INDEX.md */ = {isa = PBXFileReference; includeInIndex = 1; name = DOCS_INDEX.md; path = Docs/DOCS_INDEX.md; sourceTree = "<group>"; };
+		0796B79C229B54A913B17AF5 /* SwiftDataPlan.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = SwiftDataPlan.md; path = Data/Local/SwiftDataPlan.md; sourceTree = "<group>"; };
+		09C908C1E3AE72F97B3373AA /* DOCS_INDEX.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = DOCS_INDEX.md; path = Docs/DOCS_INDEX.md; sourceTree = "<group>"; };
 		09E5C79494876502E131F00D /* Product.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Product.swift; path = Domain/Models/Product.swift; sourceTree = "<group>"; };
 		0B42120FE15CAAFC32EF38E7 /* MenuView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		1110628191DE17D6A3B63B35 /* Pods-IngrediScore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IngrediScore.release.xcconfig"; path = "Target Support Files/Pods-IngrediScore/Pods-IngrediScore.release.xcconfig"; sourceTree = "<group>"; };
 		1AE5E3C8E71B966E7FC1ED3C /* AppRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppRouter.swift; path = App/AppRouter.swift; sourceTree = "<group>"; };
-		1E7EEDBD81721E1B78894F51 /* COMPONENT_USAGE_NOTES.md */ = {isa = PBXFileReference; includeInIndex = 1; name = COMPONENT_USAGE_NOTES.md; path = Docs/COMPONENT_USAGE_NOTES.md; sourceTree = "<group>"; };
+		1E7EEDBD81721E1B78894F51 /* COMPONENT_USAGE_NOTES.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = COMPONENT_USAGE_NOTES.md; path = Docs/COMPONENT_USAGE_NOTES.md; sourceTree = "<group>"; };
 		1ED76CACD1676AC1222C7D4C /* IngredientMatch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IngredientMatch.swift; path = Domain/Models/IngredientMatch.swift; sourceTree = "<group>"; };
 		211CC84CD1EC01CAD88247C3 /* AnalysisDTOs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnalysisDTOs.swift; path = Data/Remote/Models/AnalysisDTOs.swift; sourceTree = "<group>"; };
 		256F76A691F5156674EDC285 /* EvidenceStudyCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EvidenceStudyCardView.swift; path = Shared/Components/EvidenceStudyCardView.swift; sourceTree = "<group>"; };
 		2FD8C3A3FBDF561FFDD30E61 /* LiveProductRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LiveProductRepository.swift; path = Data/Repositories/LiveProductRepository.swift; sourceTree = "<group>"; };
 		30FC22C091F8813A9EEE0C71 /* LoadingStateView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoadingStateView.swift; path = Shared/Components/LoadingStateView.swift; sourceTree = "<group>"; };
-		33902ED5A5C859BEA40DF863 /* SCAN_OVERLAY_PLAN.md */ = {isa = PBXFileReference; includeInIndex = 1; name = SCAN_OVERLAY_PLAN.md; path = Docs/SCAN_OVERLAY_PLAN.md; sourceTree = "<group>"; };
+		33902ED5A5C859BEA40DF863 /* SCAN_OVERLAY_PLAN.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = SCAN_OVERLAY_PLAN.md; path = Docs/SCAN_OVERLAY_PLAN.md; sourceTree = "<group>"; };
 		34873A9D5469AB160DF14C4E /* HomeViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HomeViewModel.swift; path = Features/Home/HomeViewModel.swift; sourceTree = "<group>"; };
-		348B2C8A358B84A9A9AD1D27 /* IngrediScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = IngrediScore.app; path = IngrediScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		348B2C8A358B84A9A9AD1D27 /* IngrediScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IngrediScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		372AD8628E1B3AA385717C04 /* AppColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppColors.swift; path = Shared/DesignSystem/AppColors.swift; sourceTree = "<group>"; };
 		375CA0E295EA97F10F7F8F50 /* IngrediScoreApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IngrediScoreApp.swift; path = App/IngrediScoreApp.swift; sourceTree = "<group>"; };
 		3E09A0A56D7EDB7F45F6D41A /* IngredientDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IngredientDetailView.swift; path = Features/IngredientDetail/IngredientDetailView.swift; sourceTree = "<group>"; };
 		3FB245A02A7D78434E0DB453 /* SupportingTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SupportingTypes.swift; path = Domain/Models/SupportingTypes.swift; sourceTree = "<group>"; };
-		42418135CF2B9DF865F0E0C9 /* MOCK_TO_LIVE_TRANSITION.md */ = {isa = PBXFileReference; includeInIndex = 1; name = MOCK_TO_LIVE_TRANSITION.md; path = Docs/MOCK_TO_LIVE_TRANSITION.md; sourceTree = "<group>"; };
+		42418135CF2B9DF865F0E0C9 /* MOCK_TO_LIVE_TRANSITION.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = MOCK_TO_LIVE_TRANSITION.md; path = Docs/MOCK_TO_LIVE_TRANSITION.md; sourceTree = "<group>"; };
 		4350D22232025FAAEFDF7222 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		466786660A1D848CF698A482 /* APIClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = Data/Remote/APIClient.swift; sourceTree = "<group>"; };
 		48DBA7E4F5CEF29C5AD34AF0 /* FirebaseRepositories.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FirebaseRepositories.swift; sourceTree = "<group>"; };
-		4ADA658D5FF869AD188BDB4F /* BACKLOG.md */ = {isa = PBXFileReference; includeInIndex = 1; name = BACKLOG.md; path = Docs/BACKLOG.md; sourceTree = "<group>"; };
+		4ADA658D5FF869AD188BDB4F /* BACKLOG.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = BACKLOG.md; path = Docs/BACKLOG.md; sourceTree = "<group>"; };
 		4FBBDDEE2A7015FA5B31ABC4 /* AboutView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		552D8386EECC750303A4FF23 /* CLIENT_TASK_BREAKDOWN.md */ = {isa = PBXFileReference; includeInIndex = 1; name = CLIENT_TASK_BREAKDOWN.md; path = Docs/CLIENT_TASK_BREAKDOWN.md; sourceTree = "<group>"; };
+		552D8386EECC750303A4FF23 /* CLIENT_TASK_BREAKDOWN.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = CLIENT_TASK_BREAKDOWN.md; path = Docs/CLIENT_TASK_BREAKDOWN.md; sourceTree = "<group>"; };
 		5650F515F1C393E806A08D7A /* EvidenceStudy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EvidenceStudy.swift; path = Domain/Models/EvidenceStudy.swift; sourceTree = "<group>"; };
 		565BF8759502E478F5B1CE12 /* ProductEndpoints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProductEndpoints.swift; path = Data/Remote/Endpoints/ProductEndpoints.swift; sourceTree = "<group>"; };
 		56D06971882076F9CBA574DF /* IngredientScanView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IngredientScanView.swift; path = Features/ScanIngredients/IngredientScanView.swift; sourceTree = "<group>"; };
-		584696D6759E43E02C4B9D0B /* CLIENT_BACKEND_ALIGNMENT.md */ = {isa = PBXFileReference; includeInIndex = 1; name = CLIENT_BACKEND_ALIGNMENT.md; path = Docs/CLIENT_BACKEND_ALIGNMENT.md; sourceTree = "<group>"; };
+		584696D6759E43E02C4B9D0B /* CLIENT_BACKEND_ALIGNMENT.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = CLIENT_BACKEND_ALIGNMENT.md; path = Docs/CLIENT_BACKEND_ALIGNMENT.md; sourceTree = "<group>"; };
 		5B34541FA083C28FBAE48520 /* LoadableState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoadableState.swift; path = Shared/Utilities/LoadableState.swift; sourceTree = "<group>"; };
 		61CF2B9645E252ECC3048475 /* ErrorStateView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ErrorStateView.swift; path = Shared/Components/ErrorStateView.swift; sourceTree = "<group>"; };
 		64913BF7ED2919B73D162CA9 /* Repositories.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Repositories.swift; path = Domain/Protocols/Repositories.swift; sourceTree = "<group>"; };
@@ -114,14 +116,14 @@
 		73342CB290C50D8451053920 /* MockData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MockData.swift; path = Shared/Utilities/MockData.swift; sourceTree = "<group>"; };
 		752B18F194B99C03A6086DDB /* ScoringVersion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScoringVersion.swift; path = Domain/Models/ScoringVersion.swift; sourceTree = "<group>"; };
 		787956745522CF5DA78D0F25 /* LiveAnalysisRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LiveAnalysisRepository.swift; path = Data/Repositories/LiveAnalysisRepository.swift; sourceTree = "<group>"; };
-		78C6AC01E3B96F80AB72A20B /* Preview Content */ = {isa = PBXFileReference; includeInIndex = 1; path = "Preview Content"; sourceTree = "<group>"; };
+		78C6AC01E3B96F80AB72A20B /* Preview Content */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
 		7A0A1F3DA06A83819BF1810A /* DTOMapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DTOMapper.swift; path = Data/Mappers/DTOMapper.swift; sourceTree = "<group>"; };
 		7D897F85810D69F208F2CB2E /* IngredientRowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IngredientRowView.swift; path = Shared/Components/IngredientRowView.swift; sourceTree = "<group>"; };
 		803DC69D79F20B807464F794 /* AnalysisEndpoints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnalysisEndpoints.swift; path = Data/Remote/Endpoints/AnalysisEndpoints.swift; sourceTree = "<group>"; };
 		83B3E605A5EAE89A7A78E28A /* BarcodeScanViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarcodeScanViewModel.swift; path = Features/ScanBarcode/BarcodeScanViewModel.swift; sourceTree = "<group>"; };
-		84AC96C36F46DDB2A85D935F /* ENVIRONMENT_SWITCHING_PLAN.md */ = {isa = PBXFileReference; includeInIndex = 1; name = ENVIRONMENT_SWITCHING_PLAN.md; path = Docs/ENVIRONMENT_SWITCHING_PLAN.md; sourceTree = "<group>"; };
+		84AC96C36F46DDB2A85D935F /* ENVIRONMENT_SWITCHING_PLAN.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = ENVIRONMENT_SWITCHING_PLAN.md; path = Docs/ENVIRONMENT_SWITCHING_PLAN.md; sourceTree = "<group>"; };
 		863A7C76C0EFD213F5F53251 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8BF9A8C323A2E959EBAA0C5A /* PROTOTYPE_TO_NATIVE_MIGRATION_MAP.md */ = {isa = PBXFileReference; includeInIndex = 1; name = PROTOTYPE_TO_NATIVE_MIGRATION_MAP.md; path = Docs/PROTOTYPE_TO_NATIVE_MIGRATION_MAP.md; sourceTree = "<group>"; };
+		8BF9A8C323A2E959EBAA0C5A /* PROTOTYPE_TO_NATIVE_MIGRATION_MAP.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = PROTOTYPE_TO_NATIVE_MIGRATION_MAP.md; path = Docs/PROTOTYPE_TO_NATIVE_MIGRATION_MAP.md; sourceTree = "<group>"; };
 		944607B986F1705AB78EEEA3 /* FirestoreRESTClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FirestoreRESTClient.swift; sourceTree = "<group>"; };
 		9452F30D1A925DCBB48E5C41 /* SearchView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		9876F9E1DD03D1CC321D555E /* AppError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppError.swift; path = Shared/Utilities/AppError.swift; sourceTree = "<group>"; };
@@ -129,33 +131,35 @@
 		9B37BCBF79D6F08F5E6294B5 /* AppEnvironment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppEnvironment.swift; path = App/AppEnvironment.swift; sourceTree = "<group>"; };
 		9D9B9A0E3354CA91EF83D745 /* AppSpacing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppSpacing.swift; path = Shared/DesignSystem/AppSpacing.swift; sourceTree = "<group>"; };
 		9E3F88391B05C239E817083D /* Ingredient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Ingredient.swift; path = Domain/Models/Ingredient.swift; sourceTree = "<group>"; };
-		A260DA60CB23958A050DCE8E /* LiveAPIClientPlan.md */ = {isa = PBXFileReference; includeInIndex = 1; name = LiveAPIClientPlan.md; path = Data/Remote/LiveAPIClientPlan.md; sourceTree = "<group>"; };
+		A260DA60CB23958A050DCE8E /* LiveAPIClientPlan.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = LiveAPIClientPlan.md; path = Data/Remote/LiveAPIClientPlan.md; sourceTree = "<group>"; };
 		AC0143287ECF9A252ED2CBC7 /* CacheStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CacheStore.swift; path = Data/Local/CacheStore.swift; sourceTree = "<group>"; };
 		ACC63652E49DEBF50A0368CC /* ScanHubView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ScanHubView.swift; sourceTree = "<group>"; };
 		B061733A96EEBD35B8EF3DB8 /* HistoryViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HistoryViewModel.swift; path = Features/History/HistoryViewModel.swift; sourceTree = "<group>"; };
-		B85E832B2DA937641E801408 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		B8BA146114CA8C7A17CAE3FF /* MILESTONE_1.md */ = {isa = PBXFileReference; includeInIndex = 1; name = MILESTONE_1.md; path = Docs/MILESTONE_1.md; sourceTree = "<group>"; };
+		B85E832B2DA937641E801408 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B8BA146114CA8C7A17CAE3FF /* MILESTONE_1.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = MILESTONE_1.md; path = Docs/MILESTONE_1.md; sourceTree = "<group>"; };
 		BBD1821D3AE345336A54F4F2 /* IngredientScanViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IngredientScanViewModel.swift; path = Features/ScanIngredients/IngredientScanViewModel.swift; sourceTree = "<group>"; };
 		BE238FF2795AD89982F9C42B /* AppConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppConfiguration.swift; path = App/AppConfiguration.swift; sourceTree = "<group>"; };
 		C260550EC5DBBAB891667374 /* ScoreBadgeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScoreBadgeView.swift; path = Shared/Components/ScoreBadgeView.swift; sourceTree = "<group>"; };
 		CAF0DB63DDCFBAAFB5CA1076 /* ProductResultView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProductResultView.swift; path = Features/ProductResult/ProductResultView.swift; sourceTree = "<group>"; };
-		CF2DEE22A86BE3597F86F978 /* NEXT_STEPS.md */ = {isa = PBXFileReference; includeInIndex = 1; name = NEXT_STEPS.md; path = Docs/NEXT_STEPS.md; sourceTree = "<group>"; };
+		CF2DEE22A86BE3597F86F978 /* NEXT_STEPS.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = NEXT_STEPS.md; path = Docs/NEXT_STEPS.md; sourceTree = "<group>"; };
 		D1EA17C31C1738D6D77F70A0 /* ProductResultViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProductResultViewModel.swift; path = Features/ProductResult/ProductResultViewModel.swift; sourceTree = "<group>"; };
-		D22B874BC7336A899941E112 /* NEXT_HIGH_VALUE_STEPS.md */ = {isa = PBXFileReference; includeInIndex = 1; name = NEXT_HIGH_VALUE_STEPS.md; path = Docs/NEXT_HIGH_VALUE_STEPS.md; sourceTree = "<group>"; };
+		D22B874BC7336A899941E112 /* NEXT_HIGH_VALUE_STEPS.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = NEXT_HIGH_VALUE_STEPS.md; path = Docs/NEXT_HIGH_VALUE_STEPS.md; sourceTree = "<group>"; };
 		D6687AFD70A0BE8C8D190AFA /* FirestoreMapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FirestoreMapper.swift; sourceTree = "<group>"; };
 		D7B11A562B15A353365714E1 /* ProductAnalysis.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProductAnalysis.swift; path = Domain/Models/ProductAnalysis.swift; sourceTree = "<group>"; };
-		D8B1D46C089819F9B2A18C0C /* BACKEND_CONTRACT_NOTES.md */ = {isa = PBXFileReference; includeInIndex = 1; name = BACKEND_CONTRACT_NOTES.md; path = Docs/BACKEND_CONTRACT_NOTES.md; sourceTree = "<group>"; };
+		D7B6992D9F1FDDD55A306E00 /* Pods-IngrediScore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IngrediScore.debug.xcconfig"; path = "Target Support Files/Pods-IngrediScore/Pods-IngrediScore.debug.xcconfig"; sourceTree = "<group>"; };
+		D8B1D46C089819F9B2A18C0C /* BACKEND_CONTRACT_NOTES.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = BACKEND_CONTRACT_NOTES.md; path = Docs/BACKEND_CONTRACT_NOTES.md; sourceTree = "<group>"; };
 		DC9D929C4EF10E25098428B7 /* ProductDTOs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProductDTOs.swift; path = Data/Remote/Models/ProductDTOs.swift; sourceTree = "<group>"; };
-		E0ABC4FF1B9EBE5CF8D0D47F /* LiveRepositoriesPlan.md */ = {isa = PBXFileReference; includeInIndex = 1; name = LiveRepositoriesPlan.md; path = Data/Repositories/LiveRepositoriesPlan.md; sourceTree = "<group>"; };
+		E0ABC4FF1B9EBE5CF8D0D47F /* LiveRepositoriesPlan.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = LiveRepositoriesPlan.md; path = Data/Repositories/LiveRepositoriesPlan.md; sourceTree = "<group>"; };
 		E8ABE599AA97DD33A9F0B00A /* GoogleService-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F076D1BCFE610D39F269B645 /* IngredientDetailViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IngredientDetailViewModel.swift; path = Features/IngredientDetail/IngredientDetailViewModel.swift; sourceTree = "<group>"; };
 		F1C1841F98A8C1F6E1AA11AA /* HistoryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HistoryView.swift; path = Features/History/HistoryView.swift; sourceTree = "<group>"; };
+		F5D22A6072733BCA6D7B7FF7 /* Pods_IngrediScore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IngrediScore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E4A52B0CFEDDDCF912BAE5 /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RootView.swift; path = App/RootView.swift; sourceTree = "<group>"; };
 		F7A9939C531E3904EF979DC7 /* ScanningServices.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScanningServices.swift; path = Services/ScanningServices.swift; sourceTree = "<group>"; };
-		F7B5EC4E9CEFE290D73C002C /* UI_COMPONENTS_PLAN.md */ = {isa = PBXFileReference; includeInIndex = 1; name = UI_COMPONENTS_PLAN.md; path = Docs/UI_COMPONENTS_PLAN.md; sourceTree = "<group>"; };
+		F7B5EC4E9CEFE290D73C002C /* UI_COMPONENTS_PLAN.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = UI_COMPONENTS_PLAN.md; path = Docs/UI_COMPONENTS_PLAN.md; sourceTree = "<group>"; };
 		F90AC4E34B821777CD7243FA /* EmptyStateView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmptyStateView.swift; path = Shared/Components/EmptyStateView.swift; sourceTree = "<group>"; };
 		FA3B7E7F68803BBD90E33079 /* MockRepositories.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MockRepositories.swift; path = Data/Repositories/MockRepositories.swift; sourceTree = "<group>"; };
-		FAC7F1AA7D4CBA77F77B84DC /* API_CLIENT_IMPLEMENTATION_NOTES.md */ = {isa = PBXFileReference; includeInIndex = 1; name = API_CLIENT_IMPLEMENTATION_NOTES.md; path = Docs/API_CLIENT_IMPLEMENTATION_NOTES.md; sourceTree = "<group>"; };
+		FAC7F1AA7D4CBA77F77B84DC /* API_CLIENT_IMPLEMENTATION_NOTES.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = API_CLIENT_IMPLEMENTATION_NOTES.md; path = Docs/API_CLIENT_IMPLEMENTATION_NOTES.md; sourceTree = "<group>"; };
 		FB4927B9268010076E4C780B /* SettingsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = Features/Settings/SettingsView.swift; sourceTree = "<group>"; };
 		FF01E1D454084FE0C4CDF836 /* SectionCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SectionCard.swift; path = Shared/Components/SectionCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A2EEC1AAD3C200B9FAC3D1A /* Foundation.framework in Frameworks */,
+				A8683BEED90CB5787CE405B0 /* Pods_IngrediScore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +193,6 @@
 			children = (
 				0B42120FE15CAAFC32EF38E7 /* MenuView.swift */,
 			);
-			name = Menu;
 			path = Menu;
 			sourceTree = "<group>";
 		};
@@ -197,7 +201,6 @@
 			children = (
 				6717A63AB9AC36E1593FBD92 /* FirestoreDTOs.swift */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -206,7 +209,6 @@
 			children = (
 				73266680B3D477A7F9205A7C /* IngrediScore */,
 			);
-			name = IngrediScore;
 			path = IngrediScore;
 			sourceTree = "<group>";
 		};
@@ -217,6 +219,7 @@
 				4E7EB5A6921E867E471FE601 /* Frameworks */,
 				2C196FED5A05A08733DA7E48 /* IngrediScore */,
 				BC8A48DEC84AEC3BEEF97740 /* ingrediscore-native */,
+				BE748DAC7B29E7B655E9A70D /* Pods */,
 			);
 			sourceTree = SOURCE_ROOT;
 		};
@@ -224,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				F36E9A390C78C510B1663AD4 /* iOS */,
+				F5D22A6072733BCA6D7B7FF7 /* Pods_IngrediScore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -233,7 +237,6 @@
 			children = (
 				48DBA7E4F5CEF29C5AD34AF0 /* FirebaseRepositories.swift */,
 			);
-			name = Repositories;
 			path = Repositories;
 			sourceTree = "<group>";
 		};
@@ -242,7 +245,6 @@
 			children = (
 				023E004FCEACDD47BA35339A /* FoodLibraryView.swift */,
 			);
-			name = Food;
 			path = Food;
 			sourceTree = "<group>";
 		};
@@ -254,7 +256,6 @@
 				E8ABE599AA97DD33A9F0B00A /* GoogleService-Info.plist */,
 			);
 			name = IngrediScore;
-			path = "";
 			sourceTree = "<group>";
 		};
 		7FEEDC18B2356A010293B5C1 /* Remote */ = {
@@ -263,7 +264,6 @@
 				17116C05DD105E8829EE5926 /* Models */,
 				944607B986F1705AB78EEEA3 /* FirestoreRESTClient.swift */,
 			);
-			name = Remote;
 			path = Remote;
 			sourceTree = "<group>";
 		};
@@ -272,7 +272,6 @@
 			children = (
 				D6687AFD70A0BE8C8D190AFA /* FirestoreMapper.swift */,
 			);
-			name = Mappers;
 			path = Mappers;
 			sourceTree = "<group>";
 		};
@@ -285,7 +284,6 @@
 				F8A9CD6F3C7B6BBE84AA25DA /* About */,
 				C4216E7CC315DE9A64F9B756 /* ScanHub */,
 			);
-			name = Features;
 			path = Features;
 			sourceTree = "<group>";
 		};
@@ -377,12 +375,21 @@
 			path = "../ingrediscore-native";
 			sourceTree = "<group>";
 		};
+		BE748DAC7B29E7B655E9A70D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1110628191DE17D6A3B63B35 /* Pods-IngrediScore.release.xcconfig */,
+				D7B6992D9F1FDDD55A306E00 /* Pods-IngrediScore.debug.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C4216E7CC315DE9A64F9B756 /* ScanHub */ = {
 			isa = PBXGroup;
 			children = (
 				ACC63652E49DEBF50A0368CC /* ScanHubView.swift */,
 			);
-			name = ScanHub;
 			path = ScanHub;
 			sourceTree = "<group>";
 		};
@@ -391,7 +398,6 @@
 			children = (
 				9452F30D1A925DCBB48E5C41 /* SearchView.swift */,
 			);
-			name = Search;
 			path = Search;
 			sourceTree = "<group>";
 		};
@@ -408,7 +414,6 @@
 			children = (
 				4FBBDDEE2A7015FA5B31ABC4 /* AboutView.swift */,
 			);
-			name = About;
 			path = About;
 			sourceTree = "<group>";
 		};
@@ -419,9 +424,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 91EEBA124C1C5B59CB858644 /* Build configuration list for PBXNativeTarget "IngrediScore" */;
 			buildPhases = (
+				B7C0391CAB28423F50D78810 /* [CP] Check Pods Manifest.lock */,
 				B0F880E24311AC350822DBDF /* Sources */,
 				567AD132356380C77911087E /* Frameworks */,
 				015228A7197F533FBF10C07A /* Resources */,
+				D02C267F04FCA8C533C4EE33 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -440,6 +447,12 @@
 			attributes = {
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					205AC51451CB5906CA295DBB = {
+						DevelopmentTeam = 7DH94MG42J;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 278C93DCC902DC04AE5C685E /* Build configuration list for PBXProject "IngrediScore" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -450,8 +463,6 @@
 				Base,
 			);
 			mainGroup = 34D66F95556D2ED8FF513318;
-			minimizedProjectReferenceProxies = 0;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = ABE190E6E7479D8B9ECC4316 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -473,6 +484,83 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B7C0391CAB28423F50D78810 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IngrediScore-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D02C267F04FCA8C533C4EE33 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IngrediScore/Pods-IngrediScore-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseAppCheckInterop/FirebaseAppCheckInterop.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseAuth/FirebaseAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseAuthInterop/FirebaseAuthInterop.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCoreExtension/FirebaseCoreExtension.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseFirestore/FirebaseFirestore.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseFirestoreInternal/FirebaseFirestoreInternal.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseSharedSwift/FirebaseSharedSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/RecaptchaInterop/RecaptchaInterop.framework",
+				"${BUILT_PRODUCTS_DIR}/abseil/absl.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseAppCheckInterop.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseAuthInterop.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreExtension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreInternal.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseFirestore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseFirestoreInternal.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseSharedSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RecaptchaInterop.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/absl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IngrediScore/Pods-IngrediScore-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B0F880E24311AC350822DBDF /* Sources */ = {
@@ -608,14 +696,16 @@
 		};
 		14604715937102D4A4D417DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1110628191DE17D6A3B63B35 /* Pods-IngrediScore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7DH94MG42J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = IngrediScore;
+				INFOPLIST_KEY_NSCameraUsageDescription = "IngrediScore uses the camera to scan barcodes and capture product labels for analysis.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -634,14 +724,16 @@
 		};
 		D13D8A4E7652A1C6C352DA43 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7B6992D9F1FDDD55A306E00 /* Pods-IngrediScore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7DH94MG42J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = IngrediScore;
+				INFOPLIST_KEY_NSCameraUsageDescription = "IngrediScore uses the camera to scan barcodes and capture product labels for analysis.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -705,8 +797,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

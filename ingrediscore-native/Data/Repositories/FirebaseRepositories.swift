@@ -1,4 +1,5 @@
 import Foundation
+import FirebaseFirestore
 
 struct FirebaseProductRepository: ProductRepository {
     let firestoreClient: FirestoreRESTClient
@@ -24,8 +25,10 @@ struct FirebaseProductRepository: ProductRepository {
     }
 
     func allProducts(limit: Int) async throws -> [Product] {
-        let documents = try await firestoreClient.listDocuments(collection: "products", pageSize: limit)
-        let products = documents.map(FirestoreMapper.mapProduct(document:))
+        let snapshot = try await Firestore.firestore().collection("products").limit(to: limit).getDocuments()
+        let products = snapshot.documents.map { document in
+            FirestoreMapper.mapProduct(fields: document.data().mapValues(FirestoreMapper.convert), fallbackID: document.documentID)
+        }
         for product in products {
             try await cacheStore.saveRecentProduct(product)
         }
@@ -46,7 +49,9 @@ struct FirebaseAnalysisRepository: AnalysisRepository {
     }
 
     func allIngredients(limit: Int) async throws -> [Ingredient] {
-        let documents = try await firestoreClient.listDocuments(collection: "ingredients", pageSize: limit)
-        return documents.map(FirestoreMapper.mapIngredient(document:))
+        let snapshot = try await Firestore.firestore().collection("ingredients").limit(to: limit).getDocuments()
+        return snapshot.documents.map { document in
+            FirestoreMapper.mapIngredient(fields: document.data().mapValues(FirestoreMapper.convert), fallbackID: document.documentID)
+        }
     }
 }

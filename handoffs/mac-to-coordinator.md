@@ -19,26 +19,26 @@ After any meaningful Mac/Xcode work block:
 - commit and push changes
 
 ## Latest update
-- Date/time: 2026-03-30 15:21 CDT
+- Date/time: 2026-03-30 15:48 CDT
 - What I changed:
-  - Switched priority toward deeper backend visibility so recovered Firebase data can actually appear in the native UI.
-  - Expanded repository protocols to support collection-backed reads (`allProducts(limit:)`, `allIngredients(limit:)`).
-  - Implemented Firestore REST collection listing support in `FirestoreRESTClient`.
-  - Added document-list DTO support for Firestore list responses.
-  - Extended Firebase-backed repositories so they can load product and ingredient collections from Firestore, not just single-document lookups.
-  - Updated Search to load live ingredient collections from Firebase-backed repositories.
-  - Updated Food to load live product collections from Firebase-backed repositories.
-  - Rebuilt successfully after the backend/list integration pass.
+  - Diagnosed the real reason collection-backed UI was not surfacing data: Firestore REST list reads were failing with 403, while the original web app used the proper Firebase client SDK path.
+  - Added CocoaPods support to the native project with Firebase SDK dependencies:
+    - `FirebaseAuth`
+    - `FirebaseFirestore`
+  - Generated and adopted `IngrediScore.xcworkspace` as the canonical build entry point after pod integration.
+  - Updated app startup to configure Firebase via `FirebaseApp.configure()`.
+  - Switched the collection-backed Firebase repositories from the temporary REST list bridge to real Firestore SDK reads for products and ingredients.
+  - Fixed Swift 6 / mapper integration issues that surfaced during the first workspace builds.
+  - Achieved a successful workspace build and simulator launch with the real Firebase SDK integrated.
 - Build status:
-  - `xcodebuild -project IngrediScore/IngrediScore.xcodeproj -scheme IngrediScore -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1' build` succeeds.
-  - Search/Food now compile against collection-backed Firebase reads.
+  - `xcodebuild -workspace IngrediScore.xcworkspace -scheme IngrediScore -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1' build` succeeds.
+  - App launches successfully in Simulator from the workspace build products.
 - New blockers:
-  - No new hard blocker.
-  - Runtime validation is still needed to confirm the live Firestore list endpoints return the expected real dataset in-app.
-  - The current Firestore bridge still uses a pragmatic REST adapter rather than full native Firebase SDK integration.
+  - No hard build blocker.
+  - Runtime confirmation is still needed to verify Search/Food now visibly populate from Firestore SDK reads.
 - Decisions needed from Jonathan:
-  - None immediately required to continue backend integration.
+  - None immediately required to continue.
 - Recommended next step:
-  - Run the updated app and verify Search/Food visibly populate from real Firebase data; then refine mapping depth and expand live backend coverage into more flows.
+  - Re-test Search and Food in the running app now that the Firestore SDK path is in place, confirm real data visibility, then continue expanding live backend coverage and parity on top of that.
 - Commit(s):
   - Pending local commit(s) from this update.

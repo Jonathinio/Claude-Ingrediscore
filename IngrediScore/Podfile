@@ -1,0 +1,9 @@
+platform :ios, '18.0'
+use_frameworks!
+
+project 'IngrediScore.xcodeproj'
+
+target 'IngrediScore' do
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
+end

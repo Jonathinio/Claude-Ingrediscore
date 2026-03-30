@@ -1,6 +1,29 @@
 import Foundation
 
 enum FirestoreMapper {
+    static func convert(_ value: Any) -> FirestoreValueDTO {
+        switch value {
+        case let string as String:
+            return .string(string)
+        case let int as Int:
+            return .integer(int)
+        case let int64 as Int64:
+            return .integer(Int(int64))
+        case let double as Double:
+            return .double(double)
+        case let bool as Bool:
+            return .boolean(bool)
+        case let timestamp as Date:
+            return .timestamp(ISO8601DateFormatter().string(from: timestamp))
+        case let array as [Any]:
+            return .array(array.map(convert))
+        case let dict as [String: Any]:
+            return .map(dict.mapValues(convert))
+        default:
+            return .null
+        }
+    }
+
     static func mapProduct(document: FirestoreDocumentDTO) -> Product {
         let fields = document.fields
         let barcode = fields.string("barcode")
@@ -18,6 +41,32 @@ enum FirestoreMapper {
 
         return Product(
             id: barcode ?? document.name.split(separator: "/").last.map(String.init) ?? UUID().uuidString,
+            barcode: barcode,
+            name: name,
+            brand: brand,
+            rawIngredientText: rawIngredientText,
+            analysis: analysis,
+            imageRefs: imageRefs,
+            updatedAt: updatedAt
+        )
+    }
+
+    static func mapProduct(fields: [String: FirestoreValueDTO], fallbackID: String) -> Product {
+        let barcode = fields.string("barcode")
+        let name = fields.string("name") ?? barcode ?? "Unknown Product"
+        let brand = fields.string("brand")
+        let rawIngredientText = fields.string("ingredientsRaw")
+        let updatedAt = fields.timestampDate("updatedAt") ?? fields.timestampDate("scannedAt") ?? Date()
+
+        let analysis = mapProductAnalysis(fields: fields)
+        let imageRefs = ProductImageRefs(
+            frontImageURL: nil,
+            ingredientsImageURL: nil,
+            nutritionImageURL: nil
+        )
+
+        return Product(
+            id: barcode ?? fallbackID,
             barcode: barcode,
             name: name,
             brand: brand,

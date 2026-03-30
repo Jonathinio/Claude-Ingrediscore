@@ -13,10 +13,11 @@
 - Home/dashboard, product result, ingredient detail, and shell parity restoration have all started.
 - The real Firebase iOS SDK is integrated, Search/Food use the correct named Firestore database, and live backend data is surfacing in the app.
 - Home dashboard stats now use backend-driven ingredient and evidence totals.
-- Search has now moved beyond a bare list into a more real ingredient-library surface with live ingredient loading, sorting, category chips, and visible filtered-count behavior.
+- Search has moved beyond a bare list into a more real ingredient-library surface.
+- Scan flow reconstruction has now started in a more meaningful way: the Scan tab has been rebuilt into a multi-path entry hub for barcode lookup, ingredient capture, and manual analysis entry, instead of a shallow placeholder.
 
 ## Current objective
-Use the recovered Firebase dataset plus the new product spec to deepen Search/library behavior and continue rebuilding the app’s core flows on top of real data.
+Use the recovered Firebase dataset plus the product spec to rebuild the app’s core interaction flows — especially Scan — while continuing parity and backend depth on top of real data.
 
 ## Working model
 - Mac Claw is the execution environment for Xcode/iOS work.

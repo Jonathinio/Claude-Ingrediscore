@@ -19,25 +19,24 @@ After any meaningful Mac/Xcode work block:
 - commit and push changes
 
 ## Latest update
-- Date/time: 2026-03-30 18:12 CDT
+- Date/time: 2026-03-30 18:18 CDT
 - What I changed:
-  - Wrote Jonathan’s product handoff into `PRODUCT_SPEC.md` so it becomes shared repo truth for both Claws and future rebuild work.
-  - Used that spec immediately to deepen the Search screen toward the intended ingredient-library behavior.
-  - Added sorting options to Search:
-    - score high → low
-    - score low → high
-    - name
-  - Added top-category filter chips based on the live loaded ingredient set.
-  - Improved visible search status text to show both total loaded ingredients and currently filtered results.
-  - Rebuilt successfully against the workspace after the search-depth pass.
+  - Began the next major product-critical work block: Scan flow reconstruction.
+  - Replaced the shallow placeholder Scan hub with a more complete multi-path entry screen aligned to the product spec.
+  - Added clearer capture lanes for:
+    - barcode lookup
+    - ingredient label capture / analysis
+    - manual product / ingredient entry
+  - Added a more explicit explanation of the intended scan → lookup / analysis → product result flow.
+  - Rebuilt successfully against the workspace after the scan-hub overhaul.
 - Build status:
   - `xcodebuild -workspace IngrediScore.xcworkspace -scheme IngrediScore -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1' build` succeeds.
 - New blockers:
   - No new hard blocker.
-  - Search/library UX still needs additional polish and depth, but the product-spec-driven direction is now much clearer.
+  - The scan hub now has better structure, but the deeper native scan behaviors (real camera barcode scanning, OCR/image modes, richer AI re-analysis path) still need implementation.
 - Decisions needed from Jonathan:
   - None immediately required.
 - Recommended next step:
-  - Verify the updated Search experience with the larger ingredient dataset, then rebuild the Scan flow as the next major product-critical area.
+  - Build the next layer of the Scan flow itself: either native barcode camera behavior or richer manual/OCR-driven analysis flow, depending on which product-critical interaction should land first.
 - Commit(s):
   - Pending local commit(s) from this update.

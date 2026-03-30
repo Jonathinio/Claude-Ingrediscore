@@ -76,10 +76,12 @@ struct AppEnvironment {
                 configuration: configuration,
                 productRepository: FirebaseProductRepository(
                     firestoreClient: firestoreClient,
-                    cacheStore: cacheStore
+                    cacheStore: cacheStore,
+                    databaseID: databaseID
                 ),
                 analysisRepository: FirebaseAnalysisRepository(
-                    firestoreClient: firestoreClient
+                    firestoreClient: firestoreClient,
+                    databaseID: databaseID
                 ),
                 cacheStore: cacheStore
             )

@@ -19,26 +19,24 @@ After any meaningful Mac/Xcode work block:
 - commit and push changes
 
 ## Latest update
-- Date/time: 2026-03-30 15:48 CDT
+- Date/time: 2026-03-30 17:57 CDT
 - What I changed:
-  - Diagnosed the real reason collection-backed UI was not surfacing data: Firestore REST list reads were failing with 403, while the original web app used the proper Firebase client SDK path.
-  - Added CocoaPods support to the native project with Firebase SDK dependencies:
-    - `FirebaseAuth`
-    - `FirebaseFirestore`
-  - Generated and adopted `IngrediScore.xcworkspace` as the canonical build entry point after pod integration.
-  - Updated app startup to configure Firebase via `FirebaseApp.configure()`.
-  - Switched the collection-backed Firebase repositories from the temporary REST list bridge to real Firestore SDK reads for products and ingredients.
-  - Fixed Swift 6 / mapper integration issues that surfaced during the first workspace builds.
-  - Achieved a successful workspace build and simulator launch with the real Firebase SDK integrated.
+  - Confirmed the real backend issue from runtime logs: Firestore SDK was initially connecting to `(default)` while the recovered data lives in named database `ai-studio-38be78cd-dd16-4388-b437-a416b88e1f0c`.
+  - Updated Firebase repositories to use the configured named Firestore database instead of the default database.
+  - Rebuilt successfully against the workspace after the named-database fix.
+  - Runtime validation from Jonathan confirmed live data is now surfacing:
+    - Search loaded 200 ingredients
+    - Food loaded 13 products
+  - Raised the Search ingredient load cap from 200 to 1000 so more of the recovered ingredient library can appear.
+  - Rebuilt successfully again after the cap increase.
 - Build status:
   - `xcodebuild -workspace IngrediScore.xcworkspace -scheme IngrediScore -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1' build` succeeds.
-  - App launches successfully in Simulator from the workspace build products.
 - New blockers:
   - No hard build blocker.
-  - Runtime confirmation is still needed to verify Search/Food now visibly populate from Firestore SDK reads.
+  - Main remaining work is scaling/polishing the Search/Food experience now that live backend visibility exists.
 - Decisions needed from Jonathan:
-  - None immediately required to continue.
+  - None immediately required.
 - Recommended next step:
-  - Re-test Search and Food in the running app now that the Firestore SDK path is in place, confirm real data visibility, then continue expanding live backend coverage and parity on top of that.
+  - Verify the larger ingredient load in Search, then improve search/library UX and continue replacing scaffolded paths with live Firebase-backed ones.
 - Commit(s):
   - Pending local commit(s) from this update.

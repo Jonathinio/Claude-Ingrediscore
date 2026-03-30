@@ -1,9 +1,20 @@
 import Foundation
+import FirebaseCore
 import FirebaseFirestore
+
+private enum FirestoreDatabaseProvider {
+    static func database(named databaseID: String) throws -> Firestore {
+        guard let app = FirebaseApp.app() else {
+            throw AppError.unknown("Firebase app is not configured.")
+        }
+        return Firestore.firestore(app: app, database: databaseID)
+    }
+}
 
 struct FirebaseProductRepository: ProductRepository {
     let firestoreClient: FirestoreRESTClient
     let cacheStore: CacheStoreProtocol
+    let databaseID: String
 
     func recentProducts() async throws -> [Product] {
         try await cacheStore.loadRecentProducts()
@@ -25,7 +36,8 @@ struct FirebaseProductRepository: ProductRepository {
     }
 
     func allProducts(limit: Int) async throws -> [Product] {
-        let snapshot = try await Firestore.firestore().collection("products").limit(to: limit).getDocuments()
+        let db = try FirestoreDatabaseProvider.database(named: databaseID)
+        let snapshot = try await db.collection("products").limit(to: limit).getDocuments()
         let products = snapshot.documents.map { document in
             FirestoreMapper.mapProduct(fields: document.data().mapValues(FirestoreMapper.convert), fallbackID: document.documentID)
         }
@@ -38,6 +50,7 @@ struct FirebaseProductRepository: ProductRepository {
 
 struct FirebaseAnalysisRepository: AnalysisRepository {
     let firestoreClient: FirestoreRESTClient
+    let databaseID: String
 
     func analyzeIngredientsText(_ text: String) async throws -> ProductAnalysis {
         throw AppError.unknown("Ingredient text analysis is not wired to Firebase yet.")
@@ -49,7 +62,8 @@ struct FirebaseAnalysisRepository: AnalysisRepository {
     }
 
     func allIngredients(limit: Int) async throws -> [Ingredient] {
-        let snapshot = try await Firestore.firestore().collection("ingredients").limit(to: limit).getDocuments()
+        let db = try FirestoreDatabaseProvider.database(named: databaseID)
+        let snapshot = try await db.collection("ingredients").limit(to: limit).getDocuments()
         return snapshot.documents.map { document in
             FirestoreMapper.mapIngredient(fields: document.data().mapValues(FirestoreMapper.convert), fallbackID: document.documentID)
         }

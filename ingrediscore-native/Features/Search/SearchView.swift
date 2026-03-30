@@ -6,6 +6,7 @@ struct SearchView: View {
     @State private var query = ""
     @State private var ingredients: [Ingredient] = []
     @State private var isLoading = false
+    @State private var loadError: String?
 
     private var filteredIngredients: [Ingredient] {
         let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -28,6 +29,24 @@ struct SearchView: View {
                 if isLoading {
                     ProgressView("Loading ingredients…")
                         .padding(.top, 16)
+                }
+
+                if let loadError {
+                    debugStateCard(
+                        title: "Ingredient load failed",
+                        message: loadError,
+                        tint: .red
+                    )
+                } else if ingredients.isEmpty, !isLoading {
+                    debugStateCard(
+                        title: "No ingredients loaded",
+                        message: "The screen loaded zero items from the current backend path.",
+                        tint: .orange
+                    )
+                } else {
+                    Text("Loaded \(ingredients.count) ingredients")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
 
                 VStack(spacing: 12) {
@@ -63,8 +82,34 @@ struct SearchView: View {
         .task {
             guard ingredients.isEmpty else { return }
             isLoading = true
-            ingredients = (try? await environment.analysisRepository.allIngredients(limit: 200)) ?? []
+            loadError = nil
+            do {
+                let loaded = try await environment.analysisRepository.allIngredients(limit: 1000)
+                print("[SearchView] loaded ingredients count=\(loaded.count)")
+                ingredients = loaded
+            } catch {
+                let message = error.localizedDescription
+                print("[SearchView] failed to load ingredients error=\(message)")
+                loadError = message
+            }
             isLoading = false
         }
+    }
+
+    private func debugStateCard(title: String, message: String, tint: Color) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(title)
+                .font(.system(size: 12, weight: .bold, design: .rounded))
+                .textCase(.uppercase)
+                .tracking(1.5)
+                .foregroundStyle(tint)
+            Text(message)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(tint.opacity(0.08)))
+        .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous).stroke(tint.opacity(0.12), lineWidth: 1))
     }
 }

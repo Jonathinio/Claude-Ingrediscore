@@ -7,10 +7,10 @@
 - Some native models are still simplified relative to the full historical Firestore schema, so live mapping currently uses a pragmatic adapter layer rather than a full-fidelity model overhaul.
 - App resources and branding are still placeholder-level rather than final product assets.
 - New shell pages exist now, but they are still first-pass implementations and do not yet fully match the original web app’s visual polish or all linked destinations.
-- Runtime validation is still needed to confirm Search/Food visibly populate from Firestore SDK-backed collection reads in the running app.
+- Search/Food backend visibility is now working, but search/library UX still needs better scaling and polish for the larger recovered ingredient dataset.
 
 ## Decisions that may be needed soon
-- Whether to keep the REST bridge around for any fallback/debugging use or fully retire it now that the real SDK path builds
+- Whether to fully retire the REST bridge now that the Firebase SDK path is working for collection reads
 - Final bundle identifier if different from `com.jonathan.ingrediscore`
 - Minimum iOS deployment target
 - Apple signing team / provisioning setup for device builds

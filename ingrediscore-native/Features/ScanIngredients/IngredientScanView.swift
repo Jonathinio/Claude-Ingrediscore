@@ -33,7 +33,7 @@ struct IngredientScanView: View {
                             updatedAt: Date()
                         )
 
-                        if let analysis {
+                        if analysis != nil {
                             try? await environment.productRepository.saveViewedProduct(product)
                             router.path.append(AppRoute.productResult(product))
                         }

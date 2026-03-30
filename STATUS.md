@@ -11,10 +11,11 @@
 - Firebase backend recovery is confirmed and the first live Firestore-backed native data path is implemented.
 - Home/dashboard parity restoration has started.
 - Product result parity restoration has started.
-- Ingredient detail parity restoration has now also started: the native ingredient screen has been rebuilt into a more premium web-style profile view with stronger hero/status treatment, cleaner reasoning/evidence grouping, and upgraded study cards.
+- Ingredient detail parity restoration has started.
+- A major app-shell restoration step is now in place: the native app has a real TabView-based bottom navigation shell with Home, Search, Scan, Food, and Menu tabs, plus first-pass native shell pages for Search, Food, Menu, About, and Scan hub.
 
 ## Current objective
-Continue closing the visual/UX parity gap between the native SwiftUI app and the original web prototype while keeping the live backend reconnection path functional.
+Continue restoring the original app shell and UX structure around the now-improving native screens, while keeping the live backend reconnection path functional.
 
 ## Working model
 - Mac Claw is the execution environment for Xcode/iOS work.

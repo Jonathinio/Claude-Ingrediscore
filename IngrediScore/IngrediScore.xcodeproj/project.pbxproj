@@ -186,7 +186,7 @@
 				78C6AC01E3B96F80AB72A20B /* Preview Content */,
 			);
 			name = IngrediScore;
-			path = IngrediScore;
+			path = "";
 			sourceTree = "<group>";
 		};
 		ABE190E6E7479D8B9ECC4316 /* Products */ = {

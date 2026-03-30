@@ -7,12 +7,12 @@
 - A real Xcode project now exists in `IngrediScore/IngrediScore.xcodeproj`.
 - The SwiftUI app shell has been created and wired to the existing native scaffold.
 - Mac Claw verified a successful simulator build with `xcodebuild -project IngrediScore/IngrediScore.xcodeproj -scheme IngrediScore -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1' build`.
-- Mac Claw also installed and launched the app successfully in the iPhone 17 simulator via `simctl`.
+- Mac Claw installed and launched the app successfully in the iPhone 17 simulator via `simctl`.
 - Concurrency-safety fixes were applied so the scaffold builds cleanly under the current Xcode/Swift toolchain.
-- The project currently still relies on a somewhat awkward nested resource path layout inside `IngrediScore/IngrediScore/IngrediScore/` for assets/preview resources; this is functional but not yet cleaned up.
+- The earlier nested resource path problem has now been reduced: the inner app group path in the Xcode project was repaired so app resources resolve from the canonical `IngrediScore/IngrediScore/` directories rather than incorrectly chaining through an extra nested group path.
 
 ## Current objective
-Move from the first running app shell to a cleaner, more maintainable Xcode project structure while preserving a working simulator launch path.
+Move from the first running app shell to a cleaner, more maintainable Xcode project structure and then start replacing placeholder app setup with deliberate product settings and functionality work.
 
 ## Working model
 - Mac Claw is the execution environment for Xcode/iOS work.

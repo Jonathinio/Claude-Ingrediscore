@@ -6,13 +6,17 @@
 - Native iOS code currently lives in `ingrediscore-native/`.
 - A real Xcode project now exists in `IngrediScore/IngrediScore.xcodeproj`.
 - The SwiftUI app shell has been created and wired to the existing native scaffold.
-- Mac Claw verified a successful simulator build with `xcodebuild -project IngrediScore/IngrediScore.xcodeproj -scheme IngrediScore -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1' build`.
-- Mac Claw installed and launched the app successfully in the iPhone 17 simulator via `simctl`.
+- Mac Claw verified a successful simulator build with `xcodebuild -project IngrediScore/IngrediScore.xcodeproj -scheme IngrediScore -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' build`.
 - Concurrency-safety fixes were applied so the scaffold builds cleanly under the current Xcode/Swift toolchain.
-- The earlier nested resource path problem has now been reduced: the inner app group path in the Xcode project was repaired so app resources resolve from the canonical `IngrediScore/IngrediScore/` directories rather than incorrectly chaining through an extra nested group path.
+- The project currently still relies on a somewhat awkward nested resource path layout inside `IngrediScore/IngrediScore/IngrediScore/` for assets/preview resources; this is functional but not yet cleaned up.
 
 ## Current objective
-Move from the first running app shell to a cleaner, more maintainable Xcode project structure and then start replacing placeholder app setup with deliberate product settings and functionality work.
+Use the working native iOS app shell as the base, and drive it toward parity with the earlier web prototype by restoring the key flows, visual style, layout, and product feel in native SwiftUI.
+
+## Reference source
+- The earlier React/Vite/Capacitor prototype is now available in `reference/web-prototype/`.
+- Treat it as the reference for product feel, screen structure, styling, and flow parity.
+- The goal is to rebuild that experience natively rather than revert to the web runtime.
 
 ## Working model
 - Mac Claw is the execution environment for Xcode/iOS work.

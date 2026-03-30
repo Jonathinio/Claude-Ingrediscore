@@ -24,11 +24,12 @@ After completing any meaningful work block:
 ## Current instruction
 Proceed with the next real execution step for IngrediScore:
 
-1. Create a real buildable Xcode SwiftUI iOS app project shell for `IngrediScore`.
-2. Integrate the existing `ingrediscore-native/` scaffold into that project.
-3. Attempt the first simulator build.
-4. Fix whatever can be fixed autonomously.
-5. Record the outcome in the shared repo files.
+1. Use `reference/web-prototype/` as the visual/UX/reference source for the earlier web app.
+2. Compare the current native app against that reference.
+3. Create or update a concrete parity gap list in the repo.
+4. Prioritize restoring the visual structure, styling, and key flows so the native app feels much closer to the web prototype.
+5. Continue improving the real Xcode app rather than reverting to the web runtime.
+6. Record the outcome in the shared repo files.
 
 ## Defaults unless Jonathan says otherwise
 - App name: `IngrediScore`

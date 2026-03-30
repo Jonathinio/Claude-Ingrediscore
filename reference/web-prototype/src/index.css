@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  
+  --color-dark-bg: #000000;
+  --color-dark-surface: #0D0D0D;
+  --color-dark-border: #1A1A1A;
+  --color-dark-text-primary: #FFFFFF;
+  --color-dark-text-secondary: #A0A0A0;
+
+  --animate-scan: scan 2s linear infinite;
+  @keyframes scan {
+    0%, 100% { top: 0%; }
+    50% { top: 100%; }
+  }
+}
+
+@layer base {
+  html, body, #root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #fafafa;
+    -webkit-tap-highlight-color: transparent;
+    /* Prevent background from shifting */
+    background-attachment: fixed;
+  }
+  html.dark, html.dark body, html.dark #root {
+    background-color: #000000;
+  }
+}
+
+@layer utilities {
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+  /* CONTENT BOTTOM PADDING: Nav height (64px) + safe area + 20px buffer */
+  .pb-content {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom) + 20px);
+  }
+}

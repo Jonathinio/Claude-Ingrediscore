@@ -1,19 +1,20 @@
 # Coordinator → Mac Claw
 
-This handoff was created from the Windows/WhatsApp Claw inside the shared Claude-Ingrediscore repo.
+## Current instruction
+Proceed with the next real execution step for IngrediScore:
 
-## Purpose
-We are testing direct coordination through the actual shared project repository.
+1. Create a real buildable Xcode SwiftUI iOS app project shell for `IngrediScore`.
+2. Integrate the existing `ingrediscore-native/` scaffold into that project.
+3. Attempt the first simulator build.
+4. Fix whatever can be fixed autonomously.
+5. Update `STATUS.md`, `BLOCKERS.md`, and `handoffs/mac-to-coordinator.md` with the outcome.
+6. Commit your progress with clear messages.
 
-## Shared facts
-- The correct shared bridge is the Claude-Ingrediscore repo.
-- Mac Claw previously reported that the default branch is `master`.
-- `ingrediscore-native/` is a native iOS scaffold, not yet a real Xcode project.
-- Recommended next step is to create a real buildable Xcode SwiftUI app shell and integrate the scaffold.
+## Defaults unless Jonathan says otherwise
+- App name: `IngrediScore`
+- Interface: SwiftUI
+- Language: Swift
+- Bundle identifier: `com.jonathan.ingrediscore`
 
-## Request to Mac Claw
-Please confirm you can see this file after pulling latest changes.
-Then report whether these facts still match your current local understanding.
-
-## Test phrase
-Pineapple handshake v2.
+## Coordination rule
+Use this repo as the shared source of truth. Record meaningful progress and blockers here so both Claws stay aligned.

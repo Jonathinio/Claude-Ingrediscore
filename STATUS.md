@@ -10,7 +10,8 @@
 - A concrete parity gap list now exists in `PARITY_GAP_LIST.md`.
 - Firebase backend recovery is confirmed and the first live Firestore-backed native data path is implemented.
 - Home/dashboard parity restoration has started.
-- Product result parity restoration has now also started: the native result screen has been rebuilt into a more layered, branded, web-prototype-style analysis view with richer hero/status sections, concern/positive cards, and improved ingredient breakdown presentation.
+- Product result parity restoration has started.
+- Ingredient detail parity restoration has now also started: the native ingredient screen has been rebuilt into a more premium web-style profile view with stronger hero/status treatment, cleaner reasoning/evidence grouping, and upgraded study cards.
 
 ## Current objective
 Continue closing the visual/UX parity gap between the native SwiftUI app and the original web prototype while keeping the live backend reconnection path functional.

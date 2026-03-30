@@ -15,7 +15,7 @@
 - Apple signing team / provisioning setup for device builds
 - Whether to keep the generated project structure as-is or replace it with a cleaner hand-authored/project-generator-backed setup
 - Final app icon / launch asset / branding direction
-- Which major parity flow should be prioritized after home/product result parity (ingredient detail, scan flow, search/library, etc.)
+- Which major parity flow should be prioritized after home/product result/ingredient detail parity (scan flow, search/library, bottom navigation shell, etc.)
 
 ## Rule
 When a blocker cannot be resolved autonomously, add it here with:

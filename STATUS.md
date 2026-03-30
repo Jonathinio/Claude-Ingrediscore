@@ -8,12 +8,12 @@
 - The SwiftUI app shell builds and launches successfully in Simulator.
 - The app has entered the parity-reconstruction phase against `reference/web-prototype/`.
 - A concrete parity gap list now exists in `PARITY_GAP_LIST.md`.
-- Firebase backend recovery is confirmed: the real historical backend appears to be the project `just-keyword-477517-m5`, and the live Firestore schema has been inspected/documented in `FIREBASE_RECOVERY_NOTES.md`.
-- `GoogleService-Info.plist` for `com.jonathan.ingrediscore` has been added to the native project.
-- First backend reconnection pass is now implemented: the app compiles with a read-only Firestore REST adapter and Firebase-backed repositories for barcode product lookup and ingredient detail retrieval.
+- Firebase backend recovery is confirmed and the first live Firestore-backed native data path is implemented.
+- Home/dashboard parity restoration has started.
+- Product result parity restoration has now also started: the native result screen has been rebuilt into a more layered, branded, web-prototype-style analysis view with richer hero/status sections, concern/positive cards, and improved ingredient breakdown presentation.
 
 ## Current objective
-Validate and expand the first live backend path so the native app increasingly uses recovered Firebase data instead of mock scaffold data.
+Continue closing the visual/UX parity gap between the native SwiftUI app and the original web prototype while keeping the live backend reconnection path functional.
 
 ## Working model
 - Mac Claw is the execution environment for Xcode/iOS work.

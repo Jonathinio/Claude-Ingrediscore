@@ -19,27 +19,23 @@ After any meaningful Mac/Xcode work block:
 - commit and push changes
 
 ## Latest update
-- Date/time: 2026-03-30 14:36 CDT
+- Date/time: 2026-03-30 14:41 CDT
 - What I changed:
-  - Continued native Firebase reconnection without waiting on full SDK package integration.
-  - Added a read-only Firestore REST client using the recovered Firebase project/database/API configuration.
-  - Added Firestore DTO parsing and a Firestore-to-domain mapper layer.
-  - Added Firebase-backed repository implementations for:
-    - barcode product lookup via Firestore `products/{barcode}`
-    - ingredient detail lookup via Firestore `ingredients/{id}`
-  - Extended app configuration/environment to support a new `.firebase` mode and made it the active default for this build.
-  - Repaired the Xcode project group path again so resources (including `GoogleService-Info.plist`) resolve from the canonical app directory.
-  - Added the new backend files to the Xcode target and re-verified a successful app build.
+  - Switched focus back to visual/UX parity reconstruction using `reference/web-prototype/` as the design reference.
+  - Inspected the web prototype’s score/status/ingredient-card/product-analysis patterns.
+  - Rebuilt `ingrediscore-native/Features/ProductResult/ProductResultView.swift` to move away from the old plain section-card layout and toward a much closer web-style analysis experience.
+  - Added a stronger hero/verdict area with branded hierarchy, large score, status pill, and confidence pill.
+  - Added richer "Critical Concerns" and "Positive Attributes" cards with stronger visual treatment and driver chips.
+  - Reworked the ingredient breakdown list into more premium, rounded cards with clearer navigation affordances.
+  - Rebuilt successfully after the parity pass.
 - Build status:
   - `xcodebuild -project IngrediScore/IngrediScore.xcodeproj -scheme IngrediScore -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1' build` succeeds.
-  - App now compiles with the first live Firebase-backed read path included.
 - New blockers:
-  - No hard build blocker.
-  - Live backend path is still partial: ingredient text analysis/OCR is not yet backed by the recovered Firebase backend.
-  - Full native Firebase SDK integration is still pending if/when we want auth/storage/realtime features beyond the current REST bridge.
+  - No new hard blocker.
+  - Major parity work still remains for ingredient detail, search/library, scan flow, and broader styling consistency.
 - Decisions needed from Jonathan:
-  - None immediately required to continue technical integration.
+  - None immediately required to continue parity work.
 - Recommended next step:
-  - Validate the live Firestore-backed barcode lookup end-to-end in Simulator/Xcode, then expand live product/result mapping and history flows before deciding whether full Firebase SDK integration is worth doing immediately.
+  - Continue parity reconstruction with the ingredient detail screen next, then unify the remaining shared visual language across more of the app.
 - Commit(s):
   - Pending local commit(s) from this update.

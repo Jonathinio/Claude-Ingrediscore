@@ -19,24 +19,21 @@ After any meaningful Mac/Xcode work block:
 - commit and push changes
 
 ## Latest update
-- Date/time: 2026-03-30 17:57 CDT
+- Date/time: 2026-03-30 18:01 CDT
 - What I changed:
-  - Confirmed the real backend issue from runtime logs: Firestore SDK was initially connecting to `(default)` while the recovered data lives in named database `ai-studio-38be78cd-dd16-4388-b437-a416b88e1f0c`.
-  - Updated Firebase repositories to use the configured named Firestore database instead of the default database.
-  - Rebuilt successfully against the workspace after the named-database fix.
-  - Runtime validation from Jonathan confirmed live data is now surfacing:
-    - Search loaded 200 ingredients
-    - Food loaded 13 products
-  - Raised the Search ingredient load cap from 200 to 1000 so more of the recovered ingredient library can appear.
-  - Rebuilt successfully again after the cap increase.
+  - Corrected the home dashboard stat cards so they no longer use recent-library/mock-derived values.
+  - Replaced `Recent Library` with `Ingredients`.
+  - Wired the home screen to load backend-driven ingredient totals via `allIngredients(limit: 1000)`.
+  - Wired the home screen to compute `Clinical Evidence` as the total summed study count across the loaded ingredient profiles.
+  - Rebuilt successfully against the workspace after the dashboard stat correction.
 - Build status:
   - `xcodebuild -workspace IngrediScore.xcworkspace -scheme IngrediScore -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1' build` succeeds.
 - New blockers:
-  - No hard build blocker.
-  - Main remaining work is scaling/polishing the Search/Food experience now that live backend visibility exists.
+  - No new hard blocker.
+  - Search/library experience still needs scaling/polish for the larger ingredient dataset.
 - Decisions needed from Jonathan:
   - None immediately required.
 - Recommended next step:
-  - Verify the larger ingredient load in Search, then improve search/library UX and continue replacing scaffolded paths with live Firebase-backed ones.
+  - Re-run the updated build and verify the home dashboard now shows ingredient and clinical evidence totals that better reflect the recovered backend, then continue improving search/library UX and deeper backend-backed flows.
 - Commit(s):
   - Pending local commit(s) from this update.

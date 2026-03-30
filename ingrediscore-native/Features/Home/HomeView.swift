@@ -4,24 +4,8 @@ struct HomeView: View {
     @EnvironmentObject private var router: AppRouter
     @Environment(\.appEnvironment) private var environment
     @State private var recentProducts: [Product] = []
-
-    private var totalProducts: Int { recentProducts.count }
-
-    private var totalIngredientsIndexed: Int {
-        let ingredientIDs = recentProducts
-            .compactMap(\.analysis)
-            .flatMap(\.ingredients)
-            .compactMap(\.ingredient?.id)
-        return Set(ingredientIDs).count
-    }
-
-    private var totalEvidenceItems: Int {
-        recentProducts
-            .compactMap(\.analysis)
-            .flatMap(\.ingredients)
-            .compactMap(\.ingredient)
-            .reduce(0) { $0 + $1.studies.count }
-    }
+    @State private var ingredientCount = 0
+    @State private var evidenceCount = 0
 
     var body: some View {
         ScrollView {
@@ -47,6 +31,9 @@ struct HomeView: View {
         .toolbar(.hidden, for: .navigationBar)
         .task {
             recentProducts = (try? await environment.productRepository.recentProducts()) ?? []
+            let ingredients = (try? await environment.analysisRepository.allIngredients(limit: 1000)) ?? []
+            ingredientCount = ingredients.count
+            evidenceCount = ingredients.reduce(0) { $0 + $1.studies.count }
         }
     }
 
@@ -93,16 +80,16 @@ struct HomeView: View {
     private var statCardsSection: some View {
         HStack(spacing: 14) {
             dashboardStatCard(
-                title: "Recent Library",
-                value: totalProducts,
-                unit: "items",
-                systemImage: "shippingbox.fill",
+                title: "Ingredients",
+                value: ingredientCount,
+                unit: "indexed",
+                systemImage: "leaf.fill",
                 tint: .green
             )
 
             dashboardStatCard(
                 title: "Clinical Evidence",
-                value: totalEvidenceItems,
+                value: evidenceCount,
                 unit: "papers",
                 systemImage: "book.fill",
                 tint: .orange
@@ -129,13 +116,13 @@ struct HomeView: View {
                     .foregroundStyle(.secondary)
             }
 
-            if title == "Recent Library" {
-                Text(totalIngredientsIndexed > 0 ? "\(totalIngredientsIndexed) ingredients indexed from recent products" : "Build your library by scanning products")
+            if title == "Ingredients" {
+                Text(ingredientCount > 0 ? "Recovered ingredient profiles currently available in the app" : "Ingredient totals will appear once the backend load completes")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .lineLimit(2)
             } else {
-                Text(totalEvidenceItems > 0 ? "Study count surfaced from currently loaded ingredient evidence" : "Evidence count will rise as richer data lands")
+                Text(evidenceCount > 0 ? "Total study references currently surfaced from the ingredient library" : "Clinical evidence totals will appear once the backend load completes")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .lineLimit(2)

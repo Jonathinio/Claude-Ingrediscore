@@ -10,9 +10,8 @@
 - A concrete parity gap list now exists in `PARITY_GAP_LIST.md`.
 - Firebase backend recovery is confirmed.
 - Home/dashboard, product result, ingredient detail, and shell parity restoration have all started.
-- A major backend milestone is now complete: the real Firebase iOS SDK (FirebaseCore, FirebaseAuth, FirebaseFirestore via CocoaPods) is integrated, Firebase is configured at app startup, and collection-backed Search/Food reads now use the correct named Firestore database instead of `(default)`.
-- Runtime proof now exists that live backend data is surfacing in the app: Search loaded 200 ingredients and Food loaded 13 products before the ingredient cap was raised.
-- The ingredient collection fetch cap has now been raised from 200 to 1000 so more of the recovered library can surface in Search.
+- A major backend milestone is complete: the real Firebase iOS SDK is integrated, Search/Food now use the correct named Firestore database, and live backend data is surfacing in the app.
+- Home dashboard stats have now been corrected to use backend-driven totals: `Ingredients` reflects live ingredient count and `Clinical Evidence` reflects the summed study count across loaded ingredient profiles.
 
 ## Current objective
 Keep expanding visible use of the recovered Firebase dataset throughout the native UI while continuing shell/parity refinement on top of real data.

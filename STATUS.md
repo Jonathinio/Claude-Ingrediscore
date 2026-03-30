@@ -8,11 +8,11 @@
 - The SwiftUI app shell builds and launches successfully in Simulator.
 - The app has entered the parity-reconstruction phase against `reference/web-prototype/`.
 - A concrete parity gap list now exists in `PARITY_GAP_LIST.md`.
-- First parity restoration pass is underway on the native UI.
-- Firebase backend recovery is now confirmed: the real historical backend appears to be the project `just-keyword-477517-m5`, and the live Firestore schema has been inspected/documented in `FIREBASE_RECOVERY_NOTES.md`.
+- Firebase backend recovery is confirmed: the real historical backend appears to be the project `just-keyword-477517-m5`, and the live Firestore schema has been inspected/documented in `FIREBASE_RECOVERY_NOTES.md`.
+- A new Firebase iOS app registration for the current bundle ID now exists, and `GoogleService-Info.plist` for `com.jonathan.ingrediscore` has been added to the native Xcode project resources.
 
 ## Current objective
-Reconnect the native SwiftUI app to the recovered historical Firebase backend while continuing parity reconstruction against the web prototype.
+Integrate Firebase SDK into the native iOS app and begin replacing mock repositories with Firebase-backed repositories that read from the recovered historical backend.
 
 ## Working model
 - Mac Claw is the execution environment for Xcode/iOS work.

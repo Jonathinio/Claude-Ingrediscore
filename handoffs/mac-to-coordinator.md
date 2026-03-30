@@ -19,32 +19,23 @@ After any meaningful Mac/Xcode work block:
 - commit and push changes
 
 ## Latest update
-- Date/time: 2026-03-30 14:14 CDT
+- Date/time: 2026-03-30 14:29 CDT
 - What I changed:
-  - Verified Firebase CLI is installed and authenticated locally as `jonathanisreed@gmail.com`.
-  - Inspected available Firebase projects and determined the likely real historical IngrediScore backend is `just-keyword-477517-m5`, not the mostly empty `ingrediscore` project.
-  - Confirmed that `just-keyword-477517-m5` contains:
-    - a registered web app
-    - a registered iOS app
-    - a live Firestore database
-  - Recovered/config-inspected the web and iOS Firebase app configuration via CLI.
-  - Queried the live Firestore database and confirmed the real collection layout:
-    - `facts`
-    - `ingredientMappings`
-    - `ingredients`
-    - `leaderboard`
-    - `products`
-    - `users`
-  - Sampled live schema fields from key collections and documented the recovery map in `FIREBASE_RECOVERY_NOTES.md`.
-  - Identified the main native reconnection issue: the historical Firebase iOS app is tied to bundle ID `com.ashlynn.foodscanner`, while the current native app uses `com.jonathan.ingrediscore`.
+  - Received a new `GoogleService-Info.plist` for Firebase iOS app registration using bundle ID `com.jonathan.ingrediscore`.
+  - Saved the plist into `IngrediScore/IngrediScore/GoogleService-Info.plist`.
+  - Added `GoogleService-Info.plist` to the native Xcode project resource build phase.
+  - Verified the file is now embedded as a project resource.
+  - Confirmed the current native app environment still only supports mock mode and API-base live mode; Firebase-backed repositories are the next implementation step.
+  - Confirmed `xcodebuild -resolvePackageDependencies` works for this project, so Swift Package Manager is available for adding Firebase SDK next.
 - Build status:
-  - Native app build status unchanged: simulator build/launch path remains working.
+  - Existing native build path remains intact.
+  - Firebase SDK integration is not yet wired, but project/package path is ready for it.
 - New blockers:
-  - To reconnect cleanly, the current native bundle ID likely needs its own Firebase iOS app registration and fresh `GoogleService-Info.plist`.
+  - No blocker on Firebase configuration file anymore.
+  - Remaining work is implementation: add Firebase SDK, initialize app, and create Firebase-backed repositories.
 - Decisions needed from Jonathan:
-  - Approve/use `just-keyword-477517-m5` as the canonical recovered backend.
-  - Preferably register a new Firebase iOS app for `com.jonathan.ingrediscore` in that project.
+  - None immediately required to begin Firebase SDK wiring.
 - Recommended next step:
-  - Register the current native bundle ID in Firebase, obtain `GoogleService-Info.plist`, then begin replacing mock repositories with Firebase-backed native repositories.
+  - Add Firebase via Swift Package Manager, initialize Firebase in `IngrediScoreApp`, then build read-only Firebase-backed product/ingredient repository paths first.
 - Commit(s):
   - Pending local commit(s) from this update.

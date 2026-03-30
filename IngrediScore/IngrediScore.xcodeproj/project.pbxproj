@@ -25,6 +25,7 @@
 		5370EE0352AFEC4A22D1AC1A /* SupportingTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB245A02A7D78434E0DB453 /* SupportingTypes.swift */; };
 		6332291073D325B1BE0F4B31 /* SectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF01E1D454084FE0C4CDF836 /* SectionCard.swift */; };
 		69229B0A62F328E4B5B04192 /* DTOMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0A1F3DA06A83819BF1810A /* DTOMapper.swift */; };
+		6AD597921A58D8EF5EAC6429 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8ABE599AA97DD33A9F0B00A /* GoogleService-Info.plist */; };
 		70686B69D1E74F43EC18FC1E /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE238FF2795AD89982F9C42B /* AppConfiguration.swift */; };
 		7166A267D349836C7E7DC00B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C1841F98A8C1F6E1AA11AA /* HistoryView.swift */; };
 		7652765D706D1390E78BD100 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5E3C8E71B966E7FC1ED3C /* AppRouter.swift */; };
@@ -128,6 +129,7 @@
 		D8B1D46C089819F9B2A18C0C /* BACKEND_CONTRACT_NOTES.md */ = {isa = PBXFileReference; includeInIndex = 1; name = BACKEND_CONTRACT_NOTES.md; path = Docs/BACKEND_CONTRACT_NOTES.md; sourceTree = "<group>"; };
 		DC9D929C4EF10E25098428B7 /* ProductDTOs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProductDTOs.swift; path = Data/Remote/Models/ProductDTOs.swift; sourceTree = "<group>"; };
 		E0ABC4FF1B9EBE5CF8D0D47F /* LiveRepositoriesPlan.md */ = {isa = PBXFileReference; includeInIndex = 1; name = LiveRepositoriesPlan.md; path = Data/Repositories/LiveRepositoriesPlan.md; sourceTree = "<group>"; };
+		E8ABE599AA97DD33A9F0B00A /* GoogleService-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F076D1BCFE610D39F269B645 /* IngredientDetailViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IngredientDetailViewModel.swift; path = Features/IngredientDetail/IngredientDetailViewModel.swift; sourceTree = "<group>"; };
 		F1C1841F98A8C1F6E1AA11AA /* HistoryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HistoryView.swift; path = Features/History/HistoryView.swift; sourceTree = "<group>"; };
 		F5E4A52B0CFEDDDCF912BAE5 /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RootView.swift; path = App/RootView.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			children = (
 				863A7C76C0EFD213F5F53251 /* Assets.xcassets */,
 				78C6AC01E3B96F80AB72A20B /* Preview Content */,
+				E8ABE599AA97DD33A9F0B00A /* GoogleService-Info.plist */,
 			);
 			name = IngrediScore;
 			path = IngrediScore;
@@ -339,6 +342,7 @@
 			files = (
 				98815F34BED0222035BF7E76 /* Assets.xcassets in Resources */,
 				2EEE1F2C1C7BC8BEAE036544 /* Preview Content in Resources */,
+				6AD597921A58D8EF5EAC6429 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

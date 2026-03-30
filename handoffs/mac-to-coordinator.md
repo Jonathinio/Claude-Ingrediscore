@@ -19,23 +19,27 @@ After any meaningful Mac/Xcode work block:
 - commit and push changes
 
 ## Latest update
-- Date/time: 2026-03-30 14:29 CDT
+- Date/time: 2026-03-30 14:36 CDT
 - What I changed:
-  - Received a new `GoogleService-Info.plist` for Firebase iOS app registration using bundle ID `com.jonathan.ingrediscore`.
-  - Saved the plist into `IngrediScore/IngrediScore/GoogleService-Info.plist`.
-  - Added `GoogleService-Info.plist` to the native Xcode project resource build phase.
-  - Verified the file is now embedded as a project resource.
-  - Confirmed the current native app environment still only supports mock mode and API-base live mode; Firebase-backed repositories are the next implementation step.
-  - Confirmed `xcodebuild -resolvePackageDependencies` works for this project, so Swift Package Manager is available for adding Firebase SDK next.
+  - Continued native Firebase reconnection without waiting on full SDK package integration.
+  - Added a read-only Firestore REST client using the recovered Firebase project/database/API configuration.
+  - Added Firestore DTO parsing and a Firestore-to-domain mapper layer.
+  - Added Firebase-backed repository implementations for:
+    - barcode product lookup via Firestore `products/{barcode}`
+    - ingredient detail lookup via Firestore `ingredients/{id}`
+  - Extended app configuration/environment to support a new `.firebase` mode and made it the active default for this build.
+  - Repaired the Xcode project group path again so resources (including `GoogleService-Info.plist`) resolve from the canonical app directory.
+  - Added the new backend files to the Xcode target and re-verified a successful app build.
 - Build status:
-  - Existing native build path remains intact.
-  - Firebase SDK integration is not yet wired, but project/package path is ready for it.
+  - `xcodebuild -project IngrediScore/IngrediScore.xcodeproj -scheme IngrediScore -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1' build` succeeds.
+  - App now compiles with the first live Firebase-backed read path included.
 - New blockers:
-  - No blocker on Firebase configuration file anymore.
-  - Remaining work is implementation: add Firebase SDK, initialize app, and create Firebase-backed repositories.
+  - No hard build blocker.
+  - Live backend path is still partial: ingredient text analysis/OCR is not yet backed by the recovered Firebase backend.
+  - Full native Firebase SDK integration is still pending if/when we want auth/storage/realtime features beyond the current REST bridge.
 - Decisions needed from Jonathan:
-  - None immediately required to begin Firebase SDK wiring.
+  - None immediately required to continue technical integration.
 - Recommended next step:
-  - Add Firebase via Swift Package Manager, initialize Firebase in `IngrediScoreApp`, then build read-only Firebase-backed product/ingredient repository paths first.
+  - Validate the live Firestore-backed barcode lookup end-to-end in Simulator/Xcode, then expand live product/result mapping and history flows before deciding whether full Firebase SDK integration is worth doing immediately.
 - Commit(s):
   - Pending local commit(s) from this update.

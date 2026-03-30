@@ -1,13 +1,15 @@
 # BLOCKERS
 
 ## Active blockers
-- No hard technical blocker for simulator build or first launch: the project builds and launches successfully in Simulator.
+- No hard technical blocker for simulator build or first launch: the project builds successfully.
 - Native/web parity is still incomplete across most screens and flows.
-- The native app still uses scaffolded data and simplified scan behavior in several places.
-- Firebase configuration file is now present, but Firebase SDK and repository integration are not wired yet.
+- Firebase is not yet integrated through the full native SDK; the current reconnection path uses a read-only Firestore REST adapter as the fastest working bridge.
+- Ingredient text analysis / OCR flow is not yet wired to Firebase-backed live analysis.
+- Some native models are still simplified relative to the full historical Firestore schema, so live mapping currently uses a pragmatic adapter layer rather than a full-fidelity model overhaul.
 - App resources and branding are still placeholder-level rather than final product assets.
 
 ## Decisions that may be needed soon
+- Whether to keep the REST-bridge approach temporarily or invest immediately in full Firebase SDK integration
 - Final bundle identifier if different from `com.jonathan.ingrediscore`
 - Minimum iOS deployment target
 - Apple signing team / provisioning setup for device builds

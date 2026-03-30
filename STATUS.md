@@ -9,10 +9,11 @@
 - The app has entered the parity-reconstruction phase against `reference/web-prototype/`.
 - A concrete parity gap list now exists in `PARITY_GAP_LIST.md`.
 - Firebase backend recovery is confirmed: the real historical backend appears to be the project `just-keyword-477517-m5`, and the live Firestore schema has been inspected/documented in `FIREBASE_RECOVERY_NOTES.md`.
-- A new Firebase iOS app registration for the current bundle ID now exists, and `GoogleService-Info.plist` for `com.jonathan.ingrediscore` has been added to the native Xcode project resources.
+- `GoogleService-Info.plist` for `com.jonathan.ingrediscore` has been added to the native project.
+- First backend reconnection pass is now implemented: the app compiles with a read-only Firestore REST adapter and Firebase-backed repositories for barcode product lookup and ingredient detail retrieval.
 
 ## Current objective
-Integrate Firebase SDK into the native iOS app and begin replacing mock repositories with Firebase-backed repositories that read from the recovered historical backend.
+Validate and expand the first live backend path so the native app increasingly uses recovered Firebase data instead of mock scaffold data.
 
 ## Working model
 - Mac Claw is the execution environment for Xcode/iOS work.

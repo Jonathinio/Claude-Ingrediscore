@@ -22,6 +22,7 @@
 		31F483802D5D494E30D145C7 /* IngredientRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D897F85810D69F208F2CB2E /* IngredientRowView.swift */; };
 		3AF9E342CBD739C2BC8CC4B4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4927B9268010076E4C780B /* SettingsView.swift */; };
 		400D79BB519031657D761AEF /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF2B9645E252ECC3048475 /* ErrorStateView.swift */; };
+		4E100AF98A509C90270A5D3C /* FirestoreMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6687AFD70A0BE8C8D190AFA /* FirestoreMapper.swift */; };
 		5370EE0352AFEC4A22D1AC1A /* SupportingTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB245A02A7D78434E0DB453 /* SupportingTypes.swift */; };
 		6332291073D325B1BE0F4B31 /* SectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF01E1D454084FE0C4CDF836 /* SectionCard.swift */; };
 		69229B0A62F328E4B5B04192 /* DTOMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0A1F3DA06A83819BF1810A /* DTOMapper.swift */; };
@@ -35,6 +36,7 @@
 		7E080C41E313B2951FA44E3D /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372AD8628E1B3AA385717C04 /* AppColors.swift */; };
 		83DDF9E1A0C3631AE5DD2921 /* ScanningServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A9939C531E3904EF979DC7 /* ScanningServices.swift */; };
 		8702905002F5648BB11384D0 /* IngredientMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED76CACD1676AC1222C7D4C /* IngredientMatch.swift */; };
+		880682EBAD530E2D759E4AF5 /* FirestoreRESTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944607B986F1705AB78EEEA3 /* FirestoreRESTClient.swift */; };
 		8C5FA8E700C7DD0F4859E65B /* ProductResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA17C31C1738D6D77F70A0 /* ProductResultViewModel.swift */; };
 		9495C249DD7F9A6A5D7DFBC5 /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64913BF7ED2919B73D162CA9 /* Repositories.swift */; };
 		9592B1D9B65027D927D0B738 /* ProductEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565BF8759502E478F5B1CE12 /* ProductEndpoints.swift */; };
@@ -43,11 +45,13 @@
 		9A3367A49D04B0D166F2917A /* BarcodeScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B3E605A5EAE89A7A78E28A /* BarcodeScanViewModel.swift */; };
 		9C5B5293C5FD6E71A513C5B1 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34873A9D5469AB160DF14C4E /* HomeViewModel.swift */; };
 		9C680F367C06234AA8E8913F /* IngredientScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD1821D3AE345336A54F4F2 /* IngredientScanViewModel.swift */; };
+		A0B8D0FCF778BFE783C51A6E /* FirebaseRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DBA7E4F5CEF29C5AD34AF0 /* FirebaseRepositories.swift */; };
 		A1C93C98381C86D2ABF3BC27 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3F88391B05C239E817083D /* Ingredient.swift */; };
 		A5527731A4E856E8C5B7E5A2 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9876F9E1DD03D1CC321D555E /* AppError.swift */; };
 		AAE785D68A086E2AC52614DD /* LoadableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34541FA083C28FBAE48520 /* LoadableState.swift */; };
 		B072F09A4114F5931A25E5A2 /* ScoringVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B18F194B99C03A6086DDB /* ScoringVersion.swift */; };
 		B520D8C7457A292BD67E0A2A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E5C79494876502E131F00D /* Product.swift */; };
+		BB99EA6410480755DE08C91B /* FirestoreDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6717A63AB9AC36E1593FBD92 /* FirestoreDTOs.swift */; };
 		BE9CAA3B68340474688F1225 /* IngredientDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F076D1BCFE610D39F269B645 /* IngredientDetailViewModel.swift */; };
 		C646F875FD772F5A74E9381E /* AnalysisEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803DC69D79F20B807464F794 /* AnalysisEndpoints.swift */; };
 		CCEF5C84CB970B00EFEC98D8 /* MockRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B7E7F68803BBD90E33079 /* MockRepositories.swift */; };
@@ -86,6 +90,7 @@
 		42418135CF2B9DF865F0E0C9 /* MOCK_TO_LIVE_TRANSITION.md */ = {isa = PBXFileReference; includeInIndex = 1; name = MOCK_TO_LIVE_TRANSITION.md; path = Docs/MOCK_TO_LIVE_TRANSITION.md; sourceTree = "<group>"; };
 		4350D22232025FAAEFDF7222 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		466786660A1D848CF698A482 /* APIClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = Data/Remote/APIClient.swift; sourceTree = "<group>"; };
+		48DBA7E4F5CEF29C5AD34AF0 /* FirebaseRepositories.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FirebaseRepositories.swift; sourceTree = "<group>"; };
 		4ADA658D5FF869AD188BDB4F /* BACKLOG.md */ = {isa = PBXFileReference; includeInIndex = 1; name = BACKLOG.md; path = Docs/BACKLOG.md; sourceTree = "<group>"; };
 		552D8386EECC750303A4FF23 /* CLIENT_TASK_BREAKDOWN.md */ = {isa = PBXFileReference; includeInIndex = 1; name = CLIENT_TASK_BREAKDOWN.md; path = Docs/CLIENT_TASK_BREAKDOWN.md; sourceTree = "<group>"; };
 		5650F515F1C393E806A08D7A /* EvidenceStudy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EvidenceStudy.swift; path = Domain/Models/EvidenceStudy.swift; sourceTree = "<group>"; };
@@ -95,6 +100,7 @@
 		5B34541FA083C28FBAE48520 /* LoadableState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoadableState.swift; path = Shared/Utilities/LoadableState.swift; sourceTree = "<group>"; };
 		61CF2B9645E252ECC3048475 /* ErrorStateView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ErrorStateView.swift; path = Shared/Components/ErrorStateView.swift; sourceTree = "<group>"; };
 		64913BF7ED2919B73D162CA9 /* Repositories.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Repositories.swift; path = Domain/Protocols/Repositories.swift; sourceTree = "<group>"; };
+		6717A63AB9AC36E1593FBD92 /* FirestoreDTOs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FirestoreDTOs.swift; sourceTree = "<group>"; };
 		6AD235D2F51A1FB95EBC80AC /* ErrorDTO.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ErrorDTO.swift; path = Data/Remote/Models/ErrorDTO.swift; sourceTree = "<group>"; };
 		71E2A93C0DDCF017EAF4305E /* ConfidenceBadgeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConfidenceBadgeView.swift; path = Shared/Components/ConfidenceBadgeView.swift; sourceTree = "<group>"; };
 		73342CB290C50D8451053920 /* MockData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MockData.swift; path = Shared/Utilities/MockData.swift; sourceTree = "<group>"; };
@@ -108,6 +114,7 @@
 		84AC96C36F46DDB2A85D935F /* ENVIRONMENT_SWITCHING_PLAN.md */ = {isa = PBXFileReference; includeInIndex = 1; name = ENVIRONMENT_SWITCHING_PLAN.md; path = Docs/ENVIRONMENT_SWITCHING_PLAN.md; sourceTree = "<group>"; };
 		863A7C76C0EFD213F5F53251 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BF9A8C323A2E959EBAA0C5A /* PROTOTYPE_TO_NATIVE_MIGRATION_MAP.md */ = {isa = PBXFileReference; includeInIndex = 1; name = PROTOTYPE_TO_NATIVE_MIGRATION_MAP.md; path = Docs/PROTOTYPE_TO_NATIVE_MIGRATION_MAP.md; sourceTree = "<group>"; };
+		944607B986F1705AB78EEEA3 /* FirestoreRESTClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FirestoreRESTClient.swift; sourceTree = "<group>"; };
 		9876F9E1DD03D1CC321D555E /* AppError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppError.swift; path = Shared/Utilities/AppError.swift; sourceTree = "<group>"; };
 		99CDF853240D014802F98616 /* HomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = Features/Home/HomeView.swift; sourceTree = "<group>"; };
 		9B37BCBF79D6F08F5E6294B5 /* AppEnvironment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppEnvironment.swift; path = App/AppEnvironment.swift; sourceTree = "<group>"; };
@@ -125,6 +132,7 @@
 		CF2DEE22A86BE3597F86F978 /* NEXT_STEPS.md */ = {isa = PBXFileReference; includeInIndex = 1; name = NEXT_STEPS.md; path = Docs/NEXT_STEPS.md; sourceTree = "<group>"; };
 		D1EA17C31C1738D6D77F70A0 /* ProductResultViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProductResultViewModel.swift; path = Features/ProductResult/ProductResultViewModel.swift; sourceTree = "<group>"; };
 		D22B874BC7336A899941E112 /* NEXT_HIGH_VALUE_STEPS.md */ = {isa = PBXFileReference; includeInIndex = 1; name = NEXT_HIGH_VALUE_STEPS.md; path = Docs/NEXT_HIGH_VALUE_STEPS.md; sourceTree = "<group>"; };
+		D6687AFD70A0BE8C8D190AFA /* FirestoreMapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FirestoreMapper.swift; sourceTree = "<group>"; };
 		D7B11A562B15A353365714E1 /* ProductAnalysis.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProductAnalysis.swift; path = Domain/Models/ProductAnalysis.swift; sourceTree = "<group>"; };
 		D8B1D46C089819F9B2A18C0C /* BACKEND_CONTRACT_NOTES.md */ = {isa = PBXFileReference; includeInIndex = 1; name = BACKEND_CONTRACT_NOTES.md; path = Docs/BACKEND_CONTRACT_NOTES.md; sourceTree = "<group>"; };
 		DC9D929C4EF10E25098428B7 /* ProductDTOs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProductDTOs.swift; path = Data/Remote/Models/ProductDTOs.swift; sourceTree = "<group>"; };
@@ -154,6 +162,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06F578FC48137F45F01B04A4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7FEEDC18B2356A010293B5C1 /* Remote */,
+				887ABEA1FEC68D85B78272B2 /* Mappers */,
+				54A286B7114BD138DA78765C /* Repositories */,
+			);
+			name = Data;
+			path = "../ingrediscore-native/Data";
+			sourceTree = "<group>";
+		};
+		17116C05DD105E8829EE5926 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6717A63AB9AC36E1593FBD92 /* FirestoreDTOs.swift */,
+			);
+			name = Models;
+			path = Models;
+			sourceTree = "<group>";
+		};
 		2C196FED5A05A08733DA7E48 /* IngrediScore */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +209,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		54A286B7114BD138DA78765C /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				48DBA7E4F5CEF29C5AD34AF0 /* FirebaseRepositories.swift */,
+			);
+			name = Repositories;
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		73266680B3D477A7F9205A7C /* IngrediScore */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,7 +226,26 @@
 				E8ABE599AA97DD33A9F0B00A /* GoogleService-Info.plist */,
 			);
 			name = IngrediScore;
-			path = IngrediScore;
+			path = "";
+			sourceTree = "<group>";
+		};
+		7FEEDC18B2356A010293B5C1 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				17116C05DD105E8829EE5926 /* Models */,
+				944607B986F1705AB78EEEA3 /* FirestoreRESTClient.swift */,
+			);
+			name = Remote;
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		887ABEA1FEC68D85B78272B2 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				D6687AFD70A0BE8C8D190AFA /* FirestoreMapper.swift */,
+			);
+			name = Mappers;
+			path = Mappers;
 			sourceTree = "<group>";
 		};
 		ABE190E6E7479D8B9ECC4316 /* Products */ = {
@@ -273,6 +329,7 @@
 				9876F9E1DD03D1CC321D555E /* AppError.swift */,
 				5B34541FA083C28FBAE48520 /* LoadableState.swift */,
 				73342CB290C50D8451053920 /* MockData.swift */,
+				06F578FC48137F45F01B04A4 /* Data */,
 			);
 			name = "ingrediscore-native";
 			path = "../ingrediscore-native";
@@ -404,6 +461,10 @@
 				A5527731A4E856E8C5B7E5A2 /* AppError.swift in Sources */,
 				AAE785D68A086E2AC52614DD /* LoadableState.swift in Sources */,
 				777BAA95DC20CA85A918ABAA /* MockData.swift in Sources */,
+				880682EBAD530E2D759E4AF5 /* FirestoreRESTClient.swift in Sources */,
+				BB99EA6410480755DE08C91B /* FirestoreDTOs.swift in Sources */,
+				4E100AF98A509C90270A5D3C /* FirestoreMapper.swift in Sources */,
+				A0B8D0FCF778BFE783C51A6E /* FirebaseRepositories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

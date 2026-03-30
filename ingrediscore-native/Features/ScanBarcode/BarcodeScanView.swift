@@ -11,27 +11,25 @@ struct BarcodeScanView: View {
     @State private var showFallback = false
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
-                heroSection
-                liveScannerSection
-                manualBarcodeSection
+        ZStack {
+            CameraPreviewView(session: scannerCoordinator.session)
+                .ignoresSafeArea()
 
-                if let lookupError {
-                    errorCard(message: lookupError)
-                }
+            Color.black.opacity(0.28)
+                .ignoresSafeArea()
 
-                if showFallback {
-                    fallbackSection
-                }
+            scannerOverlay
+
+            if isLoading {
+                loadingOverlay
             }
-            .padding(.horizontal, 20)
-            .padding(.top, 20)
-            .padding(.bottom, 32)
+
+            if showFallback {
+                fallbackBottomSheet
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+            }
         }
-        .background(Color(.systemGroupedBackground))
-        .navigationTitle("Scan")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarHidden(true)
         .task {
             scannerCoordinator.onCodeDetected = { code in
                 barcodeInput = code
@@ -43,173 +41,144 @@ struct BarcodeScanView: View {
         .onDisappear {
             scannerCoordinator.stop()
         }
+        .animation(.easeInOut(duration: 0.25), value: showFallback)
     }
 
-    private var heroSection: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            Text("Scan Product")
-                .font(.system(size: 32, weight: .bold, design: .rounded))
-                .foregroundStyle(Color.primary)
+    private var scannerOverlay: some View {
+        VStack {
+            HStack {
+                Button {
+                    scannerCoordinator.stop()
+                    router.openTab(.home)
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundStyle(.white)
+                        .frame(width: 44, height: 44)
+                        .background(.black.opacity(0.4))
+                        .clipShape(Circle())
+                }
 
-            Text("Point the camera at a barcode. Known products should open immediately. Unknown products should fall into guided capture.")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-
-            HStack(spacing: 10) {
-                statusPill(title: "Live Camera", tint: .green, systemImage: "camera.viewfinder")
-                statusPill(title: "Barcode First", tint: .green, systemImage: "barcode.viewfinder")
-            }
-        }
-    }
-
-    private var liveScannerSection: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            Text("Camera Scanner")
-                .font(.system(size: 11, weight: .bold, design: .rounded))
-                .textCase(.uppercase)
-                .tracking(2)
-                .foregroundStyle(.secondary)
-                .padding(.horizontal, 4)
-
-            ZStack(alignment: .bottom) {
-                CameraPreviewView(session: scannerCoordinator.session)
-                    .frame(height: 320)
-                    .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 32, style: .continuous)
-                            .stroke(Color.white.opacity(0.18), lineWidth: 1)
-                    )
-                    .overlay(scanFrameOverlay.padding(28))
-
-                Text(scannerCoordinator.authorizationDenied ? "Camera access denied. Use manual barcode entry below." : "Align the barcode inside the frame")
-                    .font(.caption)
-                    .foregroundStyle(.white.opacity(0.92))
-                    .padding(.horizontal, 14)
-                    .padding(.vertical, 10)
-                    .background(.black.opacity(0.45))
-                    .clipShape(Capsule())
-                    .padding(.bottom, 18)
-            }
-        }
-    }
-
-    private var manualBarcodeSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Manual Barcode Entry")
-                .font(.system(size: 11, weight: .bold, design: .rounded))
-                .textCase(.uppercase)
-                .tracking(2)
-                .foregroundStyle(.secondary)
-                .padding(.horizontal, 4)
-
-            VStack(alignment: .leading, spacing: 14) {
-                TextField("UPC / EAN barcode", text: $barcodeInput)
-                    .textFieldStyle(.roundedBorder)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled()
+                Spacer()
 
                 Button {
                     Task { await lookupBarcode() }
                 } label: {
-                    HStack {
-                        if isLoading {
-                            ProgressView()
-                                .tint(.white)
-                        } else {
-                            Image(systemName: "barcode.viewfinder")
-                        }
-                        Text(isLoading ? "Looking up…" : "Lookup Product")
-                            .fontWeight(.semibold)
-                    }
-                    .frame(maxWidth: .infinity)
+                    Image(systemName: "arrow.clockwise")
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundStyle(.white)
+                        .frame(width: 44, height: 44)
+                        .background(.black.opacity(0.4))
+                        .clipShape(Circle())
                 }
-                .buttonStyle(.borderedProminent)
-                .tint(.black)
-                .disabled(isLoading || barcodeInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                .disabled(isLoading || barcodeInput.isEmpty)
             }
-            .padding(20)
-            .background(
-                RoundedRectangle(cornerRadius: 28, style: .continuous)
-                    .fill(Color(.systemBackground))
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 28, style: .continuous)
-                    .stroke(Color.black.opacity(0.05), lineWidth: 1)
-            )
+            .padding(.horizontal, 20)
+            .padding(.top, 18)
+
+            Spacer()
+
+            ZStack {
+                RoundedRectangle(cornerRadius: 26, style: .continuous)
+                    .stroke(Color.white.opacity(0.95), lineWidth: 2)
+                    .frame(width: 280, height: 160)
+
+                RoundedRectangle(cornerRadius: 26, style: .continuous)
+                    .stroke(Color.green.opacity(0.95), style: StrokeStyle(lineWidth: 3, dash: [10, 8]))
+                    .frame(width: 280, height: 160)
+            }
+
+            Text(scannerCoordinator.authorizationDenied ? "Camera access denied. Use product capture after a failed lookup path is available." : "Align barcode within the frame")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(.white.opacity(0.95))
+                .padding(.top, 18)
+
+            Spacer()
+
+            VStack(spacing: 10) {
+                if !barcodeInput.isEmpty {
+                    Text(barcodeInput)
+                        .font(.system(size: 13, weight: .semibold, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.92))
+                }
+
+                Text("Known product → result page • Unknown product → capture flow")
+                    .font(.caption)
+                    .foregroundStyle(.white.opacity(0.82))
+            }
+            .padding(.bottom, showFallback ? 280 : 36)
         }
     }
 
-    private var scanFrameOverlay: some View {
-        GeometryReader { proxy in
-            let width = proxy.size.width * 0.78
-            let height: CGFloat = 120
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(Color.green.opacity(0.95), style: StrokeStyle(lineWidth: 3, dash: [10, 8]))
-                .frame(width: width, height: height)
-                .position(x: proxy.size.width / 2, y: proxy.size.height / 2)
-        }
+    private var loadingOverlay: some View {
+        Color.black.opacity(0.45)
+            .ignoresSafeArea()
+            .overlay {
+                VStack(spacing: 14) {
+                    ProgressView()
+                        .tint(.white)
+                        .scaleEffect(1.3)
+                    Text("Looking up product…")
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                }
+                .padding(24)
+                .background(.black.opacity(0.55))
+                .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+            }
     }
 
-    private var fallbackSection: some View {
-        VStack(alignment: .leading, spacing: 14) {
+    private var fallbackBottomSheet: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Capsule()
+                .fill(Color.secondary.opacity(0.35))
+                .frame(width: 42, height: 5)
+                .frame(maxWidth: .infinity)
+                .padding(.top, 10)
+
             Text("Product Not Found")
-                .font(.system(size: 11, weight: .bold, design: .rounded))
-                .textCase(.uppercase)
-                .tracking(2)
-                .foregroundStyle(.secondary)
-                .padding(.horizontal, 4)
+                .font(.system(size: 22, weight: .bold, design: .rounded))
+                .foregroundStyle(Color.primary)
 
-            VStack(alignment: .leading, spacing: 14) {
-                Text("If the product is missing from the database, the next step should be guided product capture.")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-
-                VStack(alignment: .leading, spacing: 10) {
-                    fallbackStep(number: 1, title: "Capture front of pack")
-                    fallbackStep(number: 2, title: "Capture nutrition label")
-                    fallbackStep(number: 3, title: "Capture ingredient list")
-                }
-
-                Button {
-                    router.path.append(AppRoute.ingredientScan)
-                } label: {
-                    HStack {
-                        Image(systemName: "camera.viewfinder")
-                        Text("Continue to Capture / Analysis")
-                            .fontWeight(.semibold)
-                    }
-                    .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.orange)
-            }
-            .padding(20)
-            .background(
-                RoundedRectangle(cornerRadius: 28, style: .continuous)
-                    .fill(Color(.systemBackground))
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 28, style: .continuous)
-                    .stroke(Color.black.opacity(0.05), lineWidth: 1)
-            )
-        }
-    }
-
-    private func errorCard(message: String) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Lookup Note")
-                .font(.system(size: 12, weight: .bold, design: .rounded))
-                .textCase(.uppercase)
-                .tracking(1.5)
-                .foregroundStyle(.orange)
-            Text(message)
+            Text(lookupError ?? "This barcode is not in the database yet. Continue into guided capture for a new product.")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
+
+            VStack(alignment: .leading, spacing: 10) {
+                fallbackStep(number: 1, title: "Capture front of pack")
+                fallbackStep(number: 2, title: "Capture nutrition label")
+                fallbackStep(number: 3, title: "Capture ingredient list")
+            }
+
+            Button {
+                router.path.append(AppRoute.ingredientScan)
+            } label: {
+                HStack {
+                    Image(systemName: "camera.viewfinder")
+                    Text("Continue to Capture")
+                        .fontWeight(.semibold)
+                }
+                .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.black)
+
+            Button("Try another barcode") {
+                showFallback = false
+                lookupError = nil
+            }
+            .buttonStyle(.bordered)
+            .frame(maxWidth: .infinity)
         }
-        .padding(16)
+        .padding(.horizontal, 20)
+        .padding(.bottom, 24)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(Color.orange.opacity(0.08)))
-        .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous).stroke(Color.orange.opacity(0.12), lineWidth: 1))
+        .background(
+            RoundedRectangle(cornerRadius: 32, style: .continuous)
+                .fill(Color(.systemBackground))
+                .ignoresSafeArea(edges: .bottom)
+        )
+        .frame(maxHeight: .infinity, alignment: .bottom)
     }
 
     private func fallbackStep(number: Int, title: String) -> some View {
@@ -227,29 +196,20 @@ struct BarcodeScanView: View {
         }
     }
 
-    private func statusPill(title: String, tint: Color, systemImage: String) -> some View {
-        Label(title, systemImage: systemImage)
-            .font(.system(size: 12, weight: .semibold, design: .rounded))
-            .padding(.horizontal, 12)
-            .padding(.vertical, 8)
-            .background(tint.opacity(0.12))
-            .foregroundStyle(tint)
-            .clipShape(Capsule())
-    }
-
     private func lookupBarcode() async {
+        let trimmed = barcodeInput.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+
         isLoading = true
         lookupError = nil
         showFallback = false
         defer { isLoading = false }
 
-        let trimmed = barcodeInput.trimmingCharacters(in: .whitespacesAndNewlines)
-
         if let product = try? await environment.productRepository.lookupProduct(barcode: trimmed) {
             scannerCoordinator.stop()
             router.path.append(AppRoute.productResult(product))
         } else {
-            lookupError = "No existing product was found for this barcode. The next step is guided new-product capture."
+            lookupError = "No existing product was found for this barcode."
             showFallback = true
         }
     }

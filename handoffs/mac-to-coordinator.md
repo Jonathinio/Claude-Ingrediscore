@@ -19,24 +19,24 @@ After any meaningful Mac/Xcode work block:
 - commit and push changes
 
 ## Latest update
-- Date/time: 2026-03-30 18:18 CDT
+- Date/time: 2026-03-30 18:25 CDT
 - What I changed:
-  - Began the next major product-critical work block: Scan flow reconstruction.
-  - Replaced the shallow placeholder Scan hub with a more complete multi-path entry screen aligned to the product spec.
-  - Added clearer capture lanes for:
-    - barcode lookup
-    - ingredient label capture / analysis
-    - manual product / ingredient entry
-  - Added a more explicit explanation of the intended scan → lookup / analysis → product result flow.
-  - Rebuilt successfully against the workspace after the scan-hub overhaul.
+  - Adjusted the Scan behavior based on Jonathan’s clarification that the bottom-tab Scan action should open directly into barcode scanning, not a menu of scan options.
+  - Updated the app shell so the Scan tab now opens `BarcodeScanView` directly.
+  - Rebuilt `BarcodeScanView` into a more product-accurate action-first scan screen:
+    - direct barcode lookup focus
+    - cleaner scanner-first presentation
+    - unknown-barcode fallback messaging
+    - guided new-product capture steps as the fallback path instead of first-screen choices
+  - Rebuilt successfully against the workspace after the scan behavior correction.
 - Build status:
   - `xcodebuild -workspace IngrediScore.xcworkspace -scheme IngrediScore -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1' build` succeeds.
 - New blockers:
   - No new hard blocker.
-  - The scan hub now has better structure, but the deeper native scan behaviors (real camera barcode scanning, OCR/image modes, richer AI re-analysis path) still need implementation.
+  - The scan flow is now conceptually closer to the intended UX, but still needs a real native camera barcode scanner and richer OCR/image-driven capture flow.
 - Decisions needed from Jonathan:
   - None immediately required.
 - Recommended next step:
-  - Build the next layer of the Scan flow itself: either native barcode camera behavior or richer manual/OCR-driven analysis flow, depending on which product-critical interaction should land first.
+  - Implement the next actual Scan layer: native barcode camera behavior first, then deeper new-product capture / OCR analysis flow.
 - Commit(s):
   - Pending local commit(s) from this update.

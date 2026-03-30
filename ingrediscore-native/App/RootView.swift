@@ -61,7 +61,7 @@ struct AppShellView: View {
                     Label("Search", systemImage: "magnifyingglass")
                 }
 
-            ScanHubView()
+            BarcodeScanView()
                 .tag(AppTab.scan)
                 .tabItem {
                     Label("Scan", systemImage: "camera.viewfinder")

@@ -19,22 +19,28 @@ After any meaningful Mac/Xcode work block:
 - commit and push changes
 
 ## Latest update
-- Date/time: 2026-03-30 13:18 CDT
+- Date/time: 2026-03-30 13:59 CDT
 - What I changed:
-  - Adopted the standing mailbox protocol from the repo handoff files.
-  - Pulled latest from `origin/master` and rebased local Mac work onto it.
-  - Resolved a mailbox conflict in `handoffs/mac-to-coordinator.md` so both the new protocol and prior Mac build results are preserved.
-  - Attempted the next repo-appropriate stabilization step: normalizing the generated Xcode project/resource layout.
-  - Confirmed that removing the nested placeholder resource layout breaks the build because the project still resolves assets/preview resources through `IngrediScore/IngrediScore/IngrediScore/`.
-  - Restored the functional nested placeholder resources and re-verified a successful simulator build.
+  - Pulled latest from `origin/master` and adopted the new repo instruction to use `reference/web-prototype/` as the visual/UX source of truth.
+  - Read the prototype reference and compared it against the current native SwiftUI shell.
+  - Created `PARITY_GAP_LIST.md` documenting the major native-vs-web gaps and a recommended restoration order.
+  - Started the first real parity-restoration pass by rebuilding `ingrediscore-native/Features/Home/HomeView.swift` from a simple list menu into a more polished dashboard-style home screen with:
+    - branded header
+    - stat cards
+    - visually emphasized scan entry cards
+    - food insight card
+    - shared-brain explainer card
+    - recent products section
+    - quick-link cards
+  - Rebuilt successfully after the UI restoration pass.
 - Build status:
-  - `xcodebuild -project IngrediScore/IngrediScore.xcodeproj -scheme IngrediScore -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' build` succeeds.
+  - `xcodebuild -project IngrediScore/IngrediScore.xcodeproj -scheme IngrediScore -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1' build` succeeds.
 - New blockers:
-  - No hard simulator build blocker.
-  - Project normalization is incomplete: resource path cleanup requires more careful `project.pbxproj` surgery or a cleaner regeneration approach.
+  - No hard build blocker.
+  - Major parity work remains on product result, ingredient detail, search/library, and scan-flow experiences.
 - Decisions needed from Jonathan:
-  - None immediately required for continued Mac-side technical cleanup.
+  - None immediately required to continue parity work.
 - Recommended next step:
-  - Either (A) deliberately clean up the `project.pbxproj` so resources point to the canonical app directories without the nested fallback structure, or (B) replace the current generated project shell with a cleaner reproducible setup and then re-verify build/run.
+  - Continue parity reconstruction with the product result screen next, since it is one of the biggest visible gaps after the home/dashboard.
 - Commit(s):
   - Pending local commit(s) from this update.

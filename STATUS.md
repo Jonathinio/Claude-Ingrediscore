@@ -6,12 +6,13 @@
 - Native iOS code currently lives in `ingrediscore-native/`.
 - A real Xcode project exists in `IngrediScore/IngrediScore.xcodeproj`.
 - The SwiftUI app shell builds and launches successfully in Simulator.
-- The app has now entered the parity-reconstruction phase against `reference/web-prototype/`.
+- The app has entered the parity-reconstruction phase against `reference/web-prototype/`.
 - A concrete parity gap list now exists in `PARITY_GAP_LIST.md`.
-- First parity restoration pass is underway: the native home screen has been rebuilt from a plain list into a more branded, card-based dashboard that is materially closer to the web prototype’s structure and tone.
+- First parity restoration pass is underway on the native UI.
+- Firebase backend recovery is now confirmed: the real historical backend appears to be the project `just-keyword-477517-m5`, and the live Firestore schema has been inspected/documented in `FIREBASE_RECOVERY_NOTES.md`.
 
 ## Current objective
-Continue closing the parity gap between the native SwiftUI app and the web prototype, starting with visual structure and key interaction flows.
+Reconnect the native SwiftUI app to the recovered historical Firebase backend while continuing parity reconstruction against the web prototype.
 
 ## Working model
 - Mac Claw is the execution environment for Xcode/iOS work.

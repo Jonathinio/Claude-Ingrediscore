@@ -1,6 +1,6 @@
 import Foundation
 
-struct ProductAnalysis: Codable, Hashable {
+struct ProductAnalysis: Codable, Hashable, Sendable {
     let overallScore: Int
     let summary: String
     let scoreExplanation: String

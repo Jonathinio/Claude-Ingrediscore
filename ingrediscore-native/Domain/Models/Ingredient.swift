@@ -1,6 +1,6 @@
 import Foundation
 
-struct Ingredient: Identifiable, Codable, Hashable {
+struct Ingredient: Identifiable, Codable, Hashable, Sendable {
     let id: String
     let canonicalName: String
     let aliases: [String]

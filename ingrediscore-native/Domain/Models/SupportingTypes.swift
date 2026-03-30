@@ -1,37 +1,37 @@
 import Foundation
 
-enum ConfidenceLevel: String, Codable, Hashable {
+enum ConfidenceLevel: String, Codable, Hashable, Sendable {
     case low
     case moderate
     case high
 }
 
-enum ProcessingLevel: String, Codable, Hashable {
+enum ProcessingLevel: String, Codable, Hashable, Sendable {
     case minimallyProcessed
     case moderatelyProcessed
     case ultraProcessed
 }
 
-enum MatchType: String, Codable, Hashable {
+enum MatchType: String, Codable, Hashable, Sendable {
     case exact
     case alias
     case unknown
     case compound
 }
 
-enum StudyQuality: String, Codable, Hashable {
+enum StudyQuality: String, Codable, Hashable, Sendable {
     case high
     case moderate
     case lower
 }
 
-enum PopulationType: String, Codable, Hashable {
+enum PopulationType: String, Codable, Hashable, Sendable {
     case human
     case animal
     case cellStudy
 }
 
-enum IngredientCategory: String, Codable, Hashable {
+enum IngredientCategory: String, Codable, Hashable, Sendable {
     case sweeteners
     case preservatives
     case emulsifiers
@@ -52,7 +52,7 @@ enum IngredientCategory: String, Codable, Hashable {
     case other
 }
 
-enum EvidenceType: String, Codable, Hashable {
+enum EvidenceType: String, Codable, Hashable, Sendable {
     case systematicReview
     case metaAnalysis
     case rct

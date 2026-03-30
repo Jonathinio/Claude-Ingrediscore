@@ -42,7 +42,7 @@ struct AppEnvironment {
 }
 
 private struct AppEnvironmentKey: EnvironmentKey {
-    static let defaultValue = AppEnvironment.bootstrap()
+    nonisolated(unsafe) static let defaultValue = AppEnvironment.bootstrap()
 }
 
 extension EnvironmentValues {

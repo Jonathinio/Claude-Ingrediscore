@@ -1,6 +1,6 @@
 import Foundation
 
-struct IngredientMatch: Identifiable, Codable, Hashable {
+struct IngredientMatch: Identifiable, Codable, Hashable, Sendable {
     let id: String
     let originalName: String
     let displayName: String

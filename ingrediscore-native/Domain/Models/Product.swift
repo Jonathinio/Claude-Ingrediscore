@@ -1,12 +1,12 @@
 import Foundation
 
-struct ProductImageRefs: Codable, Hashable {
+struct ProductImageRefs: Codable, Hashable, Sendable {
     let frontImageURL: URL?
     let ingredientsImageURL: URL?
     let nutritionImageURL: URL?
 }
 
-struct Product: Identifiable, Codable, Hashable {
+struct Product: Identifiable, Codable, Hashable, Sendable {
     let id: String
     let barcode: String?
     let name: String

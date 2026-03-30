@@ -4,13 +4,13 @@
 - Shared coordination through the `Claude-Ingrediscore` repo is now working between Windows/WhatsApp Claw and Mac Claw.
 - Default branch is `master`.
 - Native iOS code currently lives in `ingrediscore-native/`.
-- The native codebase is a scaffold, not yet a real Xcode app project.
-- Mac Claw verified the Swift sources typecheck against the iPhone Simulator SDK.
-- Mac Claw reported there is currently no `.xcodeproj`, `.xcworkspace`, `Package.swift`, or `Podfile` in the repo.
-- Mac Claw made and committed one scaffold warning fix in `ingrediscore-native/Features/ScanIngredients/IngredientScanView.swift`.
+- A real Xcode project now exists in `IngrediScore/IngrediScore.xcodeproj`.
+- The SwiftUI app shell has been created and wired to the existing native scaffold.
+- Mac Claw verified a successful simulator build with `xcodebuild -project IngrediScore/IngrediScore.xcodeproj -scheme IngrediScore -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' build`.
+- Concurrency-safety fixes were applied so the scaffold builds cleanly under the current Xcode/Swift toolchain.
 
 ## Current objective
-Create a real buildable Xcode SwiftUI iOS app shell for IngrediScore, integrate the existing scaffold, and get the first simulator build working.
+Stabilize the newly created iOS app shell, reduce temporary project-generation hacks, and prepare for opening/running/debugging the app in Xcode with real product settings.
 
 ## Working model
 - Mac Claw is the execution environment for Xcode/iOS work.

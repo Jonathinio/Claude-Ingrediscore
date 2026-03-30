@@ -1,13 +1,16 @@
 # BLOCKERS
 
 ## Active blockers
-- No real Xcode project exists yet in the repo.
+- No hard technical blocker for simulator build anymore: the project now builds successfully.
+- The generated Xcode project still needs cleanup/hardening before it should be treated as the long-term canonical project setup.
+- App resources are placeholder-level only (basic asset catalog shell, no finalized icon/design assets).
 
 ## Decisions that may be needed soon
 - Final bundle identifier if different from `com.jonathan.ingrediscore`
 - Minimum iOS deployment target
-- Apple signing team / provisioning setup
-- Any app icon / launch asset requirements needed for a fuller first run
+- Apple signing team / provisioning setup for device builds
+- Whether to keep the generated project structure as-is or replace it with a cleaner hand-authored/project-generator-backed setup
+- Any real app icon / launch asset requirements needed for production polish
 
 ## Rule
 When a blocker cannot be resolved autonomously, add it here with:

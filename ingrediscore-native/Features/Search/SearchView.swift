@@ -1,20 +1,60 @@
 import SwiftUI
 
 struct SearchView: View {
+    enum SortOption: String, CaseIterable, Identifiable {
+        case scoreHighToLow = "Score ↓"
+        case scoreLowToHigh = "Score ↑"
+        case name = "Name"
+
+        var id: String { rawValue }
+    }
+
     @EnvironmentObject private var router: AppRouter
     @Environment(\.appEnvironment) private var environment
     @State private var query = ""
     @State private var ingredients: [Ingredient] = []
     @State private var isLoading = false
     @State private var loadError: String?
+    @State private var selectedCategory: IngredientCategory?
+    @State private var sortOption: SortOption = .scoreHighToLow
 
     private var filteredIngredients: [Ingredient] {
         let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return ingredients }
-        return ingredients.filter {
-            $0.canonicalName.localizedCaseInsensitiveContains(trimmed) ||
-            $0.aliases.contains(where: { $0.localizedCaseInsensitiveContains(trimmed) })
+
+        let base = ingredients.filter { ingredient in
+            let matchesQuery = trimmed.isEmpty ||
+                ingredient.canonicalName.localizedCaseInsensitiveContains(trimmed) ||
+                ingredient.aliases.contains(where: { $0.localizedCaseInsensitiveContains(trimmed) })
+            let matchesCategory = selectedCategory == nil || ingredient.category == selectedCategory
+            return matchesQuery && matchesCategory
         }
+
+        switch sortOption {
+        case .scoreHighToLow:
+            return base.sorted { lhs, rhs in
+                if lhs.score == rhs.score { return lhs.canonicalName < rhs.canonicalName }
+                return lhs.score > rhs.score
+            }
+        case .scoreLowToHigh:
+            return base.sorted { lhs, rhs in
+                if lhs.score == rhs.score { return lhs.canonicalName < rhs.canonicalName }
+                return lhs.score < rhs.score
+            }
+        case .name:
+            return base.sorted { $0.canonicalName < $1.canonicalName }
+        }
+    }
+
+    private var topCategories: [IngredientCategory] {
+        let counts = Dictionary(grouping: ingredients, by: \.category).mapValues(\.count)
+        return counts.sorted { lhs, rhs in
+            if lhs.value == rhs.value { return lhs.key.rawValue < rhs.key.rawValue }
+            return lhs.value > rhs.value
+        }
+        .map(\.key)
+        .filter { $0 != .other }
+        .prefix(8)
+        .map { $0 }
     }
 
     var body: some View {
@@ -25,6 +65,33 @@ struct SearchView: View {
 
                 TextField("Search ingredients", text: $query)
                     .textFieldStyle(.roundedBorder)
+
+                Picker("Sort", selection: $sortOption) {
+                    ForEach(SortOption.allCases) { option in
+                        Text(option.rawValue).tag(option)
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                if !topCategories.isEmpty {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 10) {
+                            categoryChip(title: "All", isSelected: selectedCategory == nil) {
+                                selectedCategory = nil
+                            }
+
+                            ForEach(topCategories, id: \.self) { category in
+                                categoryChip(
+                                    title: prettyCategoryName(category),
+                                    isSelected: selectedCategory == category
+                                ) {
+                                    selectedCategory = category
+                                }
+                            }
+                        }
+                        .padding(.vertical, 4)
+                    }
+                }
 
                 if isLoading {
                     ProgressView("Loading ingredients…")
@@ -44,7 +111,7 @@ struct SearchView: View {
                         tint: .orange
                     )
                 } else {
-                    Text("Loaded \(ingredients.count) ingredients")
+                    Text("Loaded \(ingredients.count) ingredients • showing \(filteredIngredients.count)")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -94,6 +161,29 @@ struct SearchView: View {
             }
             isLoading = false
         }
+    }
+
+    private func categoryChip(title: String, isSelected: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Text(title)
+                .font(.system(size: 12, weight: .semibold, design: .rounded))
+                .padding(.horizontal, 12)
+                .padding(.vertical, 10)
+                .background(isSelected ? Color.black : Color(.systemBackground))
+                .foregroundStyle(isSelected ? Color.white : Color.primary)
+                .clipShape(Capsule())
+                .overlay(
+                    Capsule()
+                        .stroke(Color.black.opacity(isSelected ? 0 : 0.08), lineWidth: 1)
+                )
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func prettyCategoryName(_ category: IngredientCategory) -> String {
+        category.rawValue
+            .replacingOccurrences(of: "([a-z])([A-Z])", with: "$1 $2", options: .regularExpression)
+            .capitalized
     }
 
     private func debugStateCard(title: String, message: String, tint: Color) -> some View {

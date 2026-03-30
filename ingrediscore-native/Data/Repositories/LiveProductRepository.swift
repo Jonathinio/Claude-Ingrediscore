@@ -28,4 +28,8 @@ struct LiveProductRepository: ProductRepository {
     func saveViewedProduct(_ product: Product) async throws {
         try await cacheStore.saveRecentProduct(product)
     }
+
+    func allProducts(limit: Int) async throws -> [Product] {
+        Array((try await cacheStore.loadRecentProducts()).prefix(limit))
+    }
 }

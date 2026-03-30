@@ -12,10 +12,11 @@
 - Home/dashboard parity restoration has started.
 - Product result parity restoration has started.
 - Ingredient detail parity restoration has started.
-- A major app-shell restoration step is now in place: the native app has a real TabView-based bottom navigation shell with Home, Search, Scan, Food, and Menu tabs, plus first-pass native shell pages for Search, Food, Menu, About, and Scan hub.
+- A first-pass bottom navigation/app shell restoration is in place.
+- Backend reconnection has now advanced beyond single-document lookups: Search and Food screens are wired to repository methods that load ingredient/product collections from Firestore-backed list reads.
 
 ## Current objective
-Continue restoring the original app shell and UX structure around the now-improving native screens, while keeping the live backend reconnection path functional.
+Make the recovered Firebase dataset visible and useful throughout the native app UI, while continuing shell/parity refinement on top of real data.
 
 ## Working model
 - Mac Claw is the execution environment for Xcode/iOS work.

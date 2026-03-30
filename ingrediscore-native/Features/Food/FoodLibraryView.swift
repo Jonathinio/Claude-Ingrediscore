@@ -4,6 +4,7 @@ struct FoodLibraryView: View {
     @EnvironmentObject private var router: AppRouter
     @Environment(\.appEnvironment) private var environment
     @State private var products: [Product] = []
+    @State private var isLoading = false
 
     var body: some View {
         ScrollView {
@@ -11,9 +12,14 @@ struct FoodLibraryView: View {
                 Text("Food")
                     .font(.system(size: 30, weight: .bold, design: .rounded))
 
-                Text("Your growing ingredient and product library.")
+                Text("Recovered product library from Firebase.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
+
+                if isLoading {
+                    ProgressView("Loading products…")
+                        .padding(.top, 16)
+                }
 
                 VStack(spacing: 12) {
                     ForEach(products) { product in
@@ -48,7 +54,10 @@ struct FoodLibraryView: View {
         }
         .background(Color(.systemGroupedBackground))
         .task {
-            products = (try? await environment.productRepository.recentProducts()) ?? []
+            guard products.isEmpty else { return }
+            isLoading = true
+            products = (try? await environment.productRepository.allProducts(limit: 100)) ?? []
+            isLoading = false
         }
     }
 }

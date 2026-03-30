@@ -1,5 +1,9 @@
 import Foundation
 
+struct FirestoreDocumentListDTO: Decodable, Sendable {
+    let documents: [FirestoreDocumentDTO]
+}
+
 struct FirestoreDocumentDTO: Decodable, Sendable {
     let name: String
     let fields: [String: FirestoreValueDTO]

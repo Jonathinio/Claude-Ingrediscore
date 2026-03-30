@@ -20,16 +20,7 @@ struct FirestoreRESTClient: Sendable {
     }
 
     func getDocument(path: String) async throws -> FirestoreDocumentDTO {
-        let trimmed = path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
-        guard var components = URLComponents(url: configuration.baseURL.appendingPathComponent(trimmed), resolvingAgainstBaseURL: false) else {
-            throw AppError.networkFailure
-        }
-        components.queryItems = [URLQueryItem(name: "key", value: configuration.apiKey)]
-
-        guard let url = components.url else {
-            throw AppError.networkFailure
-        }
-
+        let url = try makeURL(path: path)
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -48,5 +39,44 @@ struct FirestoreRESTClient: Sendable {
         } catch {
             throw AppError.unknown("Failed to decode Firestore response.")
         }
+    }
+
+    func listDocuments(collection: String, pageSize: Int) async throws -> [FirestoreDocumentDTO] {
+        let url = try makeURL(path: collection, queryItems: [
+            URLQueryItem(name: "pageSize", value: String(pageSize))
+        ])
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        let (data, response) = try await session.data(for: request)
+
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw AppError.networkFailure
+        }
+
+        guard (200...299).contains(httpResponse.statusCode) else {
+            throw AppError.networkFailure
+        }
+
+        do {
+            return try JSONDecoder().decode(FirestoreDocumentListDTO.self, from: data).documents
+        } catch {
+            throw AppError.unknown("Failed to decode Firestore document list.")
+        }
+    }
+
+    private func makeURL(path: String, queryItems: [URLQueryItem] = []) throws -> URL {
+        let trimmed = path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+        guard var components = URLComponents(url: configuration.baseURL.appendingPathComponent(trimmed), resolvingAgainstBaseURL: false) else {
+            throw AppError.networkFailure
+        }
+        components.queryItems = queryItems + [URLQueryItem(name: "key", value: configuration.apiKey)]
+
+        guard let url = components.url else {
+            throw AppError.networkFailure
+        }
+
+        return url
     }
 }

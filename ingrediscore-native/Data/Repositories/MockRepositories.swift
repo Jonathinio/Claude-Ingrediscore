@@ -14,6 +14,10 @@ struct MockProductRepository: ProductRepository {
     func saveViewedProduct(_ product: Product) async throws {
         try await cacheStore.saveRecentProduct(product)
     }
+
+    func allProducts(limit: Int) async throws -> [Product] {
+        Array(MockData.sampleProducts.prefix(limit))
+    }
 }
 
 struct MockAnalysisRepository: AnalysisRepository {
@@ -23,5 +27,9 @@ struct MockAnalysisRepository: AnalysisRepository {
 
     func ingredientDetail(id: String) async throws -> Ingredient? {
         MockData.sampleIngredients.first { $0.id == id }
+    }
+
+    func allIngredients(limit: Int) async throws -> [Ingredient] {
+        Array(MockData.sampleIngredients.prefix(limit))
     }
 }

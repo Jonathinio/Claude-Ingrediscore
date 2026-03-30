@@ -28,4 +28,8 @@ struct LiveAnalysisRepository: AnalysisRepository {
 
         return DTOMapper.map(response.ingredient)
     }
+
+    func allIngredients(limit: Int) async throws -> [Ingredient] {
+        Array(MockData.sampleIngredients.prefix(limit))
+    }
 }

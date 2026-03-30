@@ -22,6 +22,15 @@ struct FirebaseProductRepository: ProductRepository {
     func saveViewedProduct(_ product: Product) async throws {
         try await cacheStore.saveRecentProduct(product)
     }
+
+    func allProducts(limit: Int) async throws -> [Product] {
+        let documents = try await firestoreClient.listDocuments(collection: "products", pageSize: limit)
+        let products = documents.map(FirestoreMapper.mapProduct(document:))
+        for product in products {
+            try await cacheStore.saveRecentProduct(product)
+        }
+        return products
+    }
 }
 
 struct FirebaseAnalysisRepository: AnalysisRepository {
@@ -34,5 +43,10 @@ struct FirebaseAnalysisRepository: AnalysisRepository {
     func ingredientDetail(id: String) async throws -> Ingredient? {
         let document = try await firestoreClient.getDocument(path: "ingredients/\(id)")
         return FirestoreMapper.mapIngredient(document: document)
+    }
+
+    func allIngredients(limit: Int) async throws -> [Ingredient] {
+        let documents = try await firestoreClient.listDocuments(collection: "ingredients", pageSize: limit)
+        return documents.map(FirestoreMapper.mapIngredient(document:))
     }
 }

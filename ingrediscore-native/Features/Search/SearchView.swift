@@ -4,14 +4,15 @@ struct SearchView: View {
     @EnvironmentObject private var router: AppRouter
     @Environment(\.appEnvironment) private var environment
     @State private var query = ""
-    @State private var recentProducts: [Product] = []
+    @State private var ingredients: [Ingredient] = []
+    @State private var isLoading = false
 
-    private var filteredProducts: [Product] {
-        guard !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return recentProducts }
-        return recentProducts.filter {
-            $0.name.localizedCaseInsensitiveContains(query) ||
-            ($0.brand?.localizedCaseInsensitiveContains(query) ?? false) ||
-            ($0.barcode?.localizedCaseInsensitiveContains(query) ?? false)
+    private var filteredIngredients: [Ingredient] {
+        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return ingredients }
+        return ingredients.filter {
+            $0.canonicalName.localizedCaseInsensitiveContains(trimmed) ||
+            $0.aliases.contains(where: { $0.localizedCaseInsensitiveContains(trimmed) })
         }
     }
 
@@ -21,21 +22,26 @@ struct SearchView: View {
                 Text("Search")
                     .font(.system(size: 30, weight: .bold, design: .rounded))
 
-                TextField("Search products, brands, or barcodes", text: $query)
+                TextField("Search ingredients", text: $query)
                     .textFieldStyle(.roundedBorder)
 
+                if isLoading {
+                    ProgressView("Loading ingredients…")
+                        .padding(.top, 16)
+                }
+
                 VStack(spacing: 12) {
-                    ForEach(filteredProducts) { product in
+                    ForEach(filteredIngredients) { ingredient in
                         Button {
-                            router.path.append(AppRoute.productResult(product))
+                            router.path.append(AppRoute.ingredientDetail(ingredient))
                         } label: {
                             HStack(spacing: 16) {
-                                ScoreBadgeView(score: product.analysis?.overallScore ?? 5)
+                                ScoreBadgeView(score: ingredient.score)
                                 VStack(alignment: .leading, spacing: 4) {
-                                    Text(product.name)
+                                    Text(ingredient.canonicalName)
                                         .font(.system(size: 17, weight: .semibold, design: .rounded))
                                         .foregroundStyle(Color.primary)
-                                    Text(product.brand ?? "Unknown Brand")
+                                    Text(ingredient.category.rawValue.replacingOccurrences(of: "([a-z])([A-Z])", with: "$1 $2", options: .regularExpression).capitalized)
                                         .font(.caption)
                                         .foregroundStyle(.secondary)
                                 }
@@ -55,7 +61,10 @@ struct SearchView: View {
         }
         .background(Color(.systemGroupedBackground))
         .task {
-            recentProducts = (try? await environment.productRepository.recentProducts()) ?? []
+            guard ingredients.isEmpty else { return }
+            isLoading = true
+            ingredients = (try? await environment.analysisRepository.allIngredients(limit: 200)) ?? []
+            isLoading = false
         }
     }
 }

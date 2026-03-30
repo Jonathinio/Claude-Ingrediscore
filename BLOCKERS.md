@@ -8,6 +8,7 @@
 - Some native models are still simplified relative to the full historical Firestore schema, so live mapping currently uses a pragmatic adapter layer rather than a full-fidelity model overhaul.
 - App resources and branding are still placeholder-level rather than final product assets.
 - New shell pages exist now, but they are still first-pass implementations and do not yet fully match the original web app’s visual polish or all linked destinations.
+- Collection-backed UI is now wired in code, but still needs runtime validation against real Firestore responses inside the running app.
 
 ## Decisions that may be needed soon
 - Whether to keep the REST-bridge approach temporarily or invest immediately in full Firebase SDK integration

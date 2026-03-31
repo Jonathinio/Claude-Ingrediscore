@@ -1,0 +1,5 @@
+{
+  "name": "IngrediScore",
+  "description": "Evidence-based food ingredient health scoring app.",
+  "requestFramePermissions": ["camera", "microphone", "geolocation"]
+}

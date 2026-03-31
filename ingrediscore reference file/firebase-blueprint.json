@@ -1,0 +1,109 @@
+{
+  "entities": {
+    "LeaderboardEntry": {
+      "title": "Leaderboard Entry",
+      "description": "Aggregated stats for a user.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "count": { "type": "number" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["uid", "displayName", "count", "updatedAt"]
+    },
+    "FoodFact": {
+      "title": "Food Fact",
+      "description": "A single interesting fact about food.",
+      "type": "object",
+      "properties": {
+        "fact": {
+          "type": "string",
+          "description": "The text of the fact."
+        },
+        "category": {
+          "type": "string",
+          "description": "The category the fact belongs to."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the fact was added."
+        }
+      },
+      "required": ["fact", "category"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "A food product scanned by a user.",
+      "type": "object",
+      "properties": {
+        "barcode": { "type": "string" },
+        "name": { "type": "string" },
+        "brand": { "type": "string" },
+        "ingredientsRaw": { "type": "string" },
+        "ingredientsParsed": { "type": "array", "items": { "type": "string" } },
+        "analysis": { "type": "object" },
+        "score": { "type": "number" },
+        "summary": { "type": "string" },
+        "status": { "type": "string", "enum": ["confirmed", "needs-review"] },
+        "frontImage": { "type": "string" },
+        "nutritionImage": { "type": "string" },
+        "ingredientsImage": { "type": "string" },
+        "scannedAt": { "type": "number" },
+        "createdBy": { "type": "string" }
+      },
+      "required": ["barcode", "name", "ingredientsRaw", "score", "status", "scannedAt"]
+    },
+    "Ingredient": {
+      "title": "Ingredient",
+      "description": "A scientific analysis of a food ingredient.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "score": { "type": "number" },
+        "category": { "type": "string" },
+        "summaryShort": { "type": "string" },
+        "confidenceLevel": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "name", "score", "category"]
+    },
+    "IngredientMapping": {
+      "title": "Ingredient Mapping",
+      "description": "A mapping from a label name to a database ingredient ID.",
+      "type": "object",
+      "properties": {
+        "originalName": { "type": "string" },
+        "mappedId": { "type": "string" },
+        "confidence": { "type": "number" },
+        "status": { "type": "string", "enum": ["confirmed", "pending"] }
+      },
+      "required": ["originalName", "mappedId", "confidence", "status"]
+    }
+  },
+  "firestore": {
+    "facts": {
+      "schema": "FoodFact",
+      "description": "A collection of food facts."
+    },
+    "products": {
+      "schema": "Product",
+      "description": "A collection of scanned products."
+    },
+    "ingredients": {
+      "schema": "Ingredient",
+      "description": "A collection of ingredient analyses."
+    },
+    "ingredientMappings": {
+      "schema": "IngredientMapping",
+      "description": "A collection of ingredient name mappings."
+    },
+    "leaderboard": {
+      "schema": "LeaderboardEntry",
+      "description": "A collection of user stats for the leaderboard."
+    }
+  }
+}

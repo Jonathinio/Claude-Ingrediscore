@@ -1,0 +1,38 @@
+{
+  "name": "IngrediScore - Science-Based Ingredient Scanner",
+  "short_name": "IngrediScore",
+  "description": "Scan barcodes and analyze ingredients with scientific evidence.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "https://picsum.photos/seed/health/192/192",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://picsum.photos/seed/health/512/512",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["health", "lifestyle", "education"],
+  "screenshots": [
+    {
+      "src": "https://picsum.photos/seed/health-app-1/1080/1920",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "label": "Scan screen"
+    },
+    {
+      "src": "https://picsum.photos/seed/health-app-2/1080/1920",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "label": "Ingredient details"
+    }
+  ]
+}

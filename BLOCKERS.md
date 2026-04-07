@@ -8,9 +8,16 @@
 - Ingredient text analysis / OCR flow is not yet wired to Firebase-backed live analysis.
 - Some native models are still simplified relative to the full historical Firestore schema, so live mapping currently uses a pragmatic adapter layer rather than a full-fidelity model overhaul.
 - App resources and branding are still placeholder-level rather than final product assets.
-- New shell pages exist now, but they are still first-pass implementations and do not yet fully match the original web app’s visual polish or all linked destinations.
+- New shell pages exist now, but they are still first-pass implementations and do not yet fully match the original web app's visual polish or all linked destinations.
 - Search/library behavior is improving, but still needs richer filtering, better result density, and larger-library UX polish to fully match the original product intent.
 - Firebase startup/log cleanliness still needs follow-up; earlier runtime logs suggested initialization/lifecycle cleanup is not fully polished.
+- Recent products list is wiped on every relaunch — CacheStore is in-memory only, needs SwiftData or UserDefaults persistence.
+- AppEnvironment.bootstrap() is called twice at startup (once in IngrediScoreApp.init, once as the SwiftUI environment key defaultValue), causing Firebase to configure twice.
+- HomeView and SearchView both call allIngredients(limit: 1000) on every load — expensive Firestore read with no pagination or caching.
+- HomeView still contains hardcoded development/scaffolding copy ("Reference parity in progress", etc.) that needs to be replaced with real product UI.
+
+## Fixed
+- ✅ Double camera session bug: BarcodeScanView was embedded directly in TabView, causing an AVCaptureSession to start at app launch and a second one on navigation push. Fixed 2026-04-07 by replacing the Scan tab with a ScanLaunchTab placeholder that redirects to a navigation push.
 
 ## Decisions that may be needed soon
 - Whether to fully retire the REST bridge now that the Firebase SDK path is working for collection reads

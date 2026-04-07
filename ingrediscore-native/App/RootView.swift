@@ -61,7 +61,11 @@ struct AppShellView: View {
                     Label("Search", systemImage: "magnifyingglass")
                 }
 
-            BarcodeScanView()
+            // Scan tab is a lightweight launch pad — BarcodeScanView (and its
+            // AVCaptureSession) is only created when the user actually navigates
+            // into it. Embedding BarcodeScanView directly here caused two camera
+            // sessions to run simultaneously (TabView pre-initialises all tabs).
+            ScanLaunchTab()
                 .tag(AppTab.scan)
                 .tabItem {
                     Label("Scan", systemImage: "camera.viewfinder")
@@ -79,5 +83,22 @@ struct AppShellView: View {
                     Label("Menu", systemImage: "line.3.horizontal")
                 }
         }
+        // When the Scan tab is tapped, immediately push BarcodeScanView and
+        // switch back to the home tab so the tab bar stays in a clean state.
+        .onChange(of: router.selectedTab) { _, newTab in
+            if newTab == .scan {
+                router.selectedTab = .home
+                router.path.append(AppRoute.barcodeScan)
+            }
+        }
+    }
+}
+
+/// Lightweight placeholder rendered in the Scan tab slot.
+/// The user never actually sees this view — the .onChange above redirects
+/// immediately to BarcodeScanView via navigation push.
+private struct ScanLaunchTab: View {
+    var body: some View {
+        Color.clear
     }
 }
